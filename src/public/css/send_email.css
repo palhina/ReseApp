@@ -1,0 +1,82 @@
+.flash_message {
+    text-align: center;
+    margin: 30px;
+    color: #ff0000;
+    background-color: #fff;
+    padding: 30px;
+}
+
+.information-email__wrapper {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    box-shadow: 5px 5px 5px #B7B7B7;
+}
+
+.information-email__detail{
+    background-color: #3560F6;
+    padding: 30px;
+    color:#FFF;
+    margin: 0;
+}
+
+.information-email__content {
+    background-color: #fff;
+    padding: 30px;
+}
+
+.information-email__ttl,
+.information-email__text {
+    margin: 30px;
+}
+
+.information-email__subject {
+    width: 90%;
+}
+
+.information-email__message {
+    width: 90%;
+    height: 300px;
+}
+
+.information-email__btn{
+    text-align: right
+}
+
+.send-email__btn{
+    background-color: #3560F6;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    margin: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .flash_message {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .information-email__wrapper {
+        width: 90%;
+    }
+
+    .information-email__detail {
+        padding: 10px;
+    }
+
+    .information-email__content {
+        padding: 10px;
+    }
+
+    .information-email__ttl,
+    .information-email__text {
+        margin: 10px;
+    }
+
+    .send-email__btn {
+        margin: 10px;
+    }
+}

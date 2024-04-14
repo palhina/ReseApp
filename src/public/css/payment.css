@@ -1,0 +1,77 @@
+.flash_message {
+    text-align: center;
+    margin: 30px;
+    color: #ff0000;
+    background-color: #fff;
+    padding: 30px;
+}
+
+.card-wrapper {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    box-shadow: 5px 5px 5px #B7B7B7;
+}
+
+.card-header {
+    color: #fff;
+    background-color: #3560F6;
+    padding: 20px;
+}
+
+.card-body {
+    background-color: #fff;
+    padding: 30px;
+}
+
+.card-information {
+    margin: 30px;
+}
+
+.form-control {
+    border-bottom: 2px solid #999;
+    width: 80%;
+    margin: 30px auto;
+}
+
+.form__button-payment {
+    background-color: #3560F6;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    margin: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .flash_message {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .card-wrapper {
+        width: 90%;
+    }
+
+    .card-header {
+        padding: 10px;
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+    .card-information {
+        margin: 10px;
+    }
+
+    .form-control {
+        margin: 10px auto;
+    }
+
+    .form__button-payment {
+        margin: 10px;
+    }
+}

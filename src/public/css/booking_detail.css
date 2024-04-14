@@ -1,0 +1,75 @@
+.booking__wrapper{
+    width: 60%;
+    margin: auto;
+}
+
+.rsv__ttl{
+    text-align: center;
+}
+
+.booking__content{
+    background-color: #fff;
+    margin: 30px;
+}
+
+.booking__shop-name {
+    font-weight: bolder;
+    background-color: blue;
+    padding: 20px;
+    color: #fff;
+    margin: 10px 0;
+}
+
+.booking__detail{
+    padding: 30px;
+    font-size: larger;
+}
+
+.rsv__datail--ttl,
+.rsv__datail--desc {
+    padding: 20px;
+}
+
+.back{
+    text-align: right;
+}
+
+.back__btn{
+    margin: 30px;
+    padding: 10px;
+    background-color: blue;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #B5B5B5;
+}
+
+/* レスポンシブデザイン */
+@media screen and (max-width: 768px) {
+    .booking__wrapper {
+        width: 90%;
+    }
+
+    .booking__content {
+        margin: 10px;
+    }
+
+    .booking__shop-name {
+        padding: 10px;
+    }
+
+    .booking__detail {
+        padding: 10px;
+    }
+
+    .rsv__datail--ttl,
+    .rsv__datail--desc{
+        padding: 10px;
+    }
+
+    .back__btn {
+        margin: 10px;
+        padding: 5px 10px;
+        box-shadow: 2px 2px 2px #B5B5B5;
+    }
+
+}

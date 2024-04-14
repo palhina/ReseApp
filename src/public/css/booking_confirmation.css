@@ -1,0 +1,79 @@
+.booking__wrapper {
+    width: 90%;
+    margin: auto;
+}
+
+.rsv__ttl{
+    text-align: center;
+}
+
+.booking__list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.booking__content {
+    background-color: white;
+    width: 45%;
+    margin: 20px;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #B7B7B7;
+}
+
+.rsv__name{
+    margin: 20px;
+}
+
+.booking__card {
+    display: flex;
+    justify-content: space-between;
+    background-color: #3560F6;
+    color: #fff;
+    padding: 10px;
+    margin: 20px;
+    box-shadow: 5px 5px 5px #B7B7B7;
+    border-radius: 5px;
+}
+
+.booking__date{
+    display: flex;
+}
+
+.rsv__detail{
+    margin: 20px;
+}
+
+.rsv__edit--btn{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 10px;
+    cursor: pointer;
+}
+
+/* レスポンシブデザイン */
+@media screen and (max-width: 768px) {
+    .booking__wrapper {
+        width: 100%;
+    }
+
+    .booking__list {
+        display:block;
+    }
+
+    .booking__content {
+        width: 80%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .booking__card {
+        display: block;
+    }
+
+    .booking__date {
+        display: block;
+    }
+}

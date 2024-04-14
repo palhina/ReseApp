@@ -1,0 +1,92 @@
+.shop__create{
+    text-align: right;
+    margin: 30px;
+}
+
+.shop-all__create-shop{
+    background-color: #3560F6;
+    color: #fff;
+    border-style: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.shop-all__wrapper {
+    width: 100%;
+}
+
+.shop-all__ttl{
+    margin: 30px;
+    font-size: larger;
+}
+
+.shop-all {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shop-all__card {
+    width: 23%;
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 3px;
+    box-shadow: 3px 3px 3px #B7B7B7;
+    position: relative;
+}
+
+.shop-all__card-img {
+    width: 100%;
+}
+
+.card__img {
+    width: 100%;
+}
+
+.shop-all__card-desc {
+    margin: 20px;
+}
+
+.shop-all__card-name {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.card-name {
+    margin: 0;
+}
+
+.shop-all__card-tag {
+    display: flex;
+    justify-content: left;
+}
+
+.card-tag {
+    margin-right: 10px;
+}
+
+
+.edit__shop {
+    background-color: #3560F6;
+    color: #fff;
+    border-style: none;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+    .shop-all {
+        display: block;
+    }
+
+    .shop-all__card {
+        width: 80%;
+        margin: 10px auto;
+    }
+
+    .edit__shop {
+        margin: 20px 0;
+    }
+}

@@ -1,0 +1,43 @@
+.flash_message{
+    text-align: center;
+    margin: 30px;
+    color: #ff0000;
+    background-color: #fff;
+    padding: 30px;
+}
+
+.twoFA__content {
+    background-color: #fff;
+    width: 50%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.twoFA__ttl {
+    text-align: center;
+    background-color: #3560F6;
+    color: #fff;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.twoFA__btn--back{
+    text-decoration: none;
+    color: #3560F6;
+    cursor: pointer;
+}
+
+.twoFA__btn--submit{
+    border-style: none;
+    color: #3560F6;
+    background-color: #fff;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .twoFA__content {
+        width: 80%;
+        margin: 30px auto;
+    }
+}

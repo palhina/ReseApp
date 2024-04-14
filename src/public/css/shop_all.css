@@ -1,0 +1,148 @@
+.shop-all__wrapper {
+    width: 100%;
+}
+
+.search-form {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    margin: 0 5% 0 auto;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #B7B7B7;
+}
+
+.search-form__keyword{
+    width: 50%;
+}
+
+.search__area,
+.search__genre {
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    border-right: 1px solid #B7B7B7;
+}
+
+.search__key {
+    border: none;
+}
+
+.search__btn{
+    cursor: pointer;
+    width: max-content;
+}
+
+.shop-all {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shop-all__card {
+    width: 23%;
+    background-color: #fff;
+    margin: 10px ;
+    border-radius: 3px;
+    box-shadow: 3px 3px 3px #B7B7B7;
+    position: relative;
+}
+
+.shop-all__card-img {
+    width: 100%;
+}
+
+.card__img {
+    width: 100%;
+}
+
+.shop-all__card-desc {
+    margin: 20px;
+}
+
+.shop-all__card-name {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.card-name {
+    margin: 0;
+}
+
+.shop-all__card-tag {
+    display: flex;
+    justify-content: left;
+}
+
+.card-tag {
+    margin-right: 10px;
+}
+
+
+.to-shop-detail {
+    background-color: #3560F6;
+    color: #fff;
+    border-style: none;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.fav-button__not {
+    width: 24px;
+    height: 24px;
+    background-color: #B7B7B7;
+    clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
+    border-style: none;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    cursor: pointer;
+}
+
+.fav-btn__favorite{
+    background-color: red;
+    width: 24px;
+    height: 24px;
+    clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
+    border-style: none;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    cursor: pointer;
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+    .search-form {
+        width: 90%;
+        margin: 0 30px 0 auto;
+    }
+
+    .search-form__area,
+    .search-form__genre {
+        width: 20%;
+    }
+
+    .search-form__keyword {
+        width: 40%;
+    }
+
+    .search__key {
+        width: auto;
+    }
+
+    .search__area,
+    .search__area,
+    .search__genre {
+        width: 100%;
+    }
+
+    .search__btn{
+        height: auto;
+    }
+
+    .shop-all__card{
+        width: 100%;
+    }
+}

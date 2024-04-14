@@ -1,0 +1,47 @@
+.flash_message {
+    text-align: center;
+    margin: 30px;
+    color: #ff0000;
+    background-color: #fff;
+    padding: 30px;
+}
+
+.menu__content{
+    background-color: #fff;
+    width: 50%;
+    margin: 50px auto;
+    padding: 50px;
+    text-align: center;
+}
+
+.menu__list--wrapper {
+    list-style: none;
+    padding: 0;
+}
+
+.menu__info{
+    margin: 30px;
+}
+
+.menu__list {
+    color: #3560F6;
+    font-size: 1.5em;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .menu__content {
+        width: 80%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .menu__info {
+        margin: 20px 0 0 0;
+    }
+
+    .menu__list {
+        font-size: 1em;
+    }
+}

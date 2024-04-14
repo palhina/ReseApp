@@ -1,0 +1,24 @@
+.qr__content {
+    background-color: #fff;
+    width: 50%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.qr__ttl{
+    text-align: center;
+    background-color: #3560F6;
+    color: #fff;
+    padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .qr__content {
+        width: 90%;
+        margin: auto;
+    }
+
+    .qr__ttl {
+        padding: 10px;
+    }
+}

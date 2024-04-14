@@ -1,0 +1,152 @@
+/* ハンバーガーメニュー */
+#overlay-button {
+    padding: 26px 11px;
+    margin: 15px;
+    z-index: 5;
+    cursor: pointer;
+    user-select: none;
+    background-color: #3560F6;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #B7B7B7;
+}
+
+#overlay-button .hamburger-btn {
+    height: 4px;
+    width: 35px;
+    border-radius: 2px;
+    background-color: white;
+    position: relative;
+    display: block;
+}
+
+#overlay-button .hamburger-btn:before {
+    top: -10px;
+    visibility: visible;
+}
+
+#overlay-button .hamburger-btn:after {
+    top: 10px;
+}
+
+#overlay-button .hamburger-btn:before {
+    height: 4px;
+    width: 20px;
+    border-radius: 2px;
+    background-color: white;
+    position: absolute;
+    content: "";
+}
+
+
+#overlay-button .hamburger-btn:after {
+    height: 4px;
+    width: 10px;
+    border-radius: 2px;
+    background-color: white;
+    position: absolute;
+    content: "";
+}
+
+#overlay-button:hover .hamburger-btn,
+#overlay-button:hover .hamburger-btn:before,
+#overlay-button:hover .hamburger-btn:after {
+    background: #fff;
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+.hamburger-menu:checked~#overlay {
+    visibility: visible;
+}
+
+.hamburger-menu:checked~#overlay-button:hover .hamburger-btn,
+.hamburger-menu:checked~#overlay-button .hamburger-btn {
+    background: transparent;
+}
+
+.hamburger-menu:checked~#overlay-button .hamburger-btn:before {
+    transform: rotate(45deg) translate(7px, 7px);
+    width: 35px;
+}
+
+.hamburger-menu:checked~#overlay-button .hamburger-btn:after {
+    transform: rotate(-45deg) translate(7px, -7px);
+    width: 35px;
+}
+
+.hamburger-ttl{
+    font-weight: lighter;
+}
+
+
+#overlay {
+    height: 100vh;
+    width: 100vw;
+    background: #fff;
+    z-index: 2;
+    visibility: hidden;
+    position: fixed;
+    margin: 0;
+}
+
+#overlay .hamburger-menu__list-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100vh;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+#overlay .hamburger-menu__list-wrapper .hamburger-menu__list {
+    padding: 1em;
+}
+
+#overlay .hamburger-menu__list-wrapper .hamburger-menu__list .menu__link {
+    color: #3560F6;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+#overlay .hamburger-menu__list-wrapper .hamburger-menu__list .header-nav__button {
+    color: #3560F6;
+    text-decoration: none;
+    font-size: 1.5em;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* ハンバーガーメニュー以外 */
+.header {
+    width: 100%;
+    display: flex;
+    background-color: #F2F2F2;
+}
+
+.header-ttl {
+    color: #3560F6;
+    margin-left: 20px;
+}
+
+.body {
+    height: 100vh;
+    width: 100vw;
+    background-color: #F2F2F2;
+}
+
+.main {
+    background-color: #F2F2F2;
+    padding: 50px 0; 
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+    #overlay-button {
+        box-shadow: 5px 5px 5px #B7B7B7;
+    }
+}

@@ -4,6 +4,9 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReminderMail;
+use App\Models\Reservation;
 
 class Kernel extends ConsoleKernel
 {
@@ -15,7 +18,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            $today = now()->format('Y-m-d');
+            $reservations = Reservation::where('rsv_date', $today)->get();
+            foreach ($reservations as $reservation) {
+                $user = $reservation->user; 
+                Mail::to($user->email)->send(new ReminderMail($reservation));
+            }
+        })->dailyAt('08:00');
     }
 
     /**
