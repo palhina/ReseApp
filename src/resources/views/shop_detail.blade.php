@@ -5,26 +5,63 @@
 @endsection
 
 @section('content')
-
     <div class="shop-detail__wrapper">
         <div class="shop__contents">
-            <div class="shop__contents-ttl">
-                <a class="back" href="/">&lt;</a>
-                <h2>{{ $shop->shop_name }}</h2>
+            <div class="shop__contents-info">
+                <div class="shop__contents-ttl">
+                    <a class="back" href="/">&lt;</a>
+                    <h2>{{ $shop->shop_name }}</h2>
+                </div>
+                <div class="shop__contents-img">
+                    @if (strpos($shop->shop_photo, '/images/') === 0)
+                        <img class="shop__img" src="{{ $shop->shop_photo }}">
+                    @elseif ($shop->shop_photo)
+                        <img class="shop__img" src="{{ Storage::disk('s3')->url($shop->shop_photo) }}">
+                    @endif
+                </div>
+                <div class="shop__contents-tag">
+                    <p>#{{ $shop->area->shop_area }}</p>
+                    <p>#{{ $shop->genre->shop_genre }}</p>
+                </div>
+                <div class="shop__contents-desc">
+                    <p>{{ $shop->shop_comment }}</p>
+                </div>
             </div>
-            <div class="shop__contents-img">
-                @if (strpos($shop->shop_photo, '/images/') === 0)
-                    <img class="shop__img" src="{{ $shop->shop_photo }}">
-                @elseif ($shop->shop_photo)
-                    <img class="shop__img" src="{{ Storage::disk('s3')->url($shop->shop_photo) }}">
-                @endif
+            <div>
+                <form class="shop__rating" action="/rate/all/
+                {$shop->id}" method="get">
+                @csrf
+                <button class="rsv__rate--btn">全ての口コミ情報</button>
+                </form>
             </div>
-            <div class="shop__contents-tag">
-                <p>#{{ $shop->area->shop_area }}</p>
-                <p>#{{ $shop->genre->shop_genre }}</p>
+            <!-- 口コミ未投稿で表示、rating表示 -->
+            <div class="shop__contents-rating">
+                <form class="shop__rating" action="/rate/
+                {$shop->id}" method="get">
+                @csrf
+                <button class="rsv__rate--btn">口コミを投稿する</button>
+                </form>
             </div>
-            <div class="shop__contents-desc">
-                <p>{{ $shop->shop_comment }}</p>
+            <!-- 口コミ投稿済みで表示 -->
+            <div class="shop__contents-rating">
+                <div>
+                    <form class="shop__rating-edit" action="/rate/edit/
+                    {$shop->id}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <button class="rsv__rate--btn">口コミを編集</button>
+                    </form>
+                    <form class="shop__rating-delete" action="/rate/delete/
+                    {$shop->id}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <button class="rsv__rate--btn">口コミを削除</button>
+                    </form>
+                </div>
+                <div>
+                    <p>ほし：数字に合わせて星の数変更</p>
+                    <p>コメント</p>
+                </div>
             </div>
         </div>
         <div class="shop__rsv">

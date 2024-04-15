@@ -7,9 +7,8 @@
 @section('content')
     <div class="shop-detail__wrapper">
         <div class="shop__contents">
-            <div class="shop__contents-ttl">
-                <a class="back" href="/">&lt;</a>
-                <h2>{{ $shop->shop_name }}</h2>
+            <div class="shop__contents-name">
+                <p class="contents__ttl">今回のご利用はいかがでしたか？</p>
             </div>
             <div class="shop__contents-img">
                 @if (strpos($shop->shop_photo, '/images/') === 0)
@@ -18,24 +17,28 @@
                     <img class="shop__img" src="{{ Storage::disk('s3')->url($shop->shop_photo) }}">
                 @endif
             </div>
+            <div class="shop__contents-name">
+                <p class="card-name">{{ $shop->shop_name }}</p>
+            </div>
             <div class="shop__contents-tag">
                 <p>#{{ $shop->area->shop_area }}</p>
                 <p>#{{ $shop->genre->shop_genre }}</p>
             </div>
-            <div class="shop__contents-desc">
-                <p>{{ $shop->shop_comment }}</p>
+            <div class="shop__contents-detail">
+                <form class="form" action="/detail/{{$shop->id}}" method="get">
+                @csrf
+                    <button class="to-shop-detail">詳しく見る</button>
+                </form>
+            </div>
+            <div class="shop-all__fav-btn">
+            <!-- お気に入りハート実装 -->
             </div>
         </div>
         <div class="shop__rate">
-            <div class="shop__rate-txt">
-                <h3>{{ $user->name}}様</h3>
-                <p>{{ $shop->shop_name }}にご来店ありがとうございました。</p>
-                <p>よろしければ、お店の評価をお願いします</p>
-            </div>
-            <form class="shop__rate-form" action="/rate/{{$shop->id}}" method="post">
+            <form class="shop__rate-form" action="/rate/{{$shop->id}}" method="post" enctype="multipart/form-data">
             @csrf
                 <div class="form-group">
-                    <h4>評価</h4>
+                    <p>体験を評価してください</p>
                     <div class="form__fiveStar">
                         <input class="star-input" id="star1" type="radio"  name="rating" value="5">
                         <label for="star1" class="star">★</label>
@@ -55,7 +58,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <h4>コメント(任意)</h4>
+                    <p>口コミを投稿</p>
                     <textarea class="form__rate-comment" col="50" name="comment"></textarea>
                     <div class="form__error">
                         @if ($errors->has('comment'))
@@ -63,10 +66,22 @@
                         @endif
                     </div>
                 </div>
-                <div class="form__button">
-                    <button class="form__button-rate" type="submit">評価を送信</button>
+                <div class="form-group">
+                    <label class="img__upload">
+                        <p>クリックして画像を追加</p>
+                        <p>またはドラッグアンドドロップ</p>
+                        <input class="img__upload-btn" type="file" name="profile_img" accept=".jpg, .jpeg, .png">
+                    </label>
+                    <div class="form__error">
+                        @if ($errors->has('rating_img'))
+                            {{$errors->first('rating_img')}}
+                        @endif
+                    </div>
                 </div>
             </form>
         </div>
+    </div>
+    <div class="form__button">
+        <button class="form__button-rate" type="submit">口コミを投稿</button>
     </div>
 @endsection
