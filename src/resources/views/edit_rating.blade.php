@@ -8,7 +8,7 @@
     <div class="shop-detail__wrapper">
         <div class="shop__contents">
             <div class="shop__contents-name">
-                <p class="contents__ttl">今回のご利用はいかがでしたか？</p>
+                <p class="contents__ttl">口コミの編集</p>
             </div>
             <div class="shop__contents-img">
                 @if (strpos($shop->shop_photo, '/images/') === 0)
@@ -35,8 +35,9 @@
             </div>
         </div>
         <div class="shop__rate">
-            <form class="shop__rate-form" action="/rate/{{$shop->id}}" method="post" enctype="multipart/form-data">
+            <form class="shop__rate-form" action="/rate/edit/{{$rating->id}}" method="post" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
                 <div class="form-group">
                     <p>体験を評価してください</p>
                     <div class="form__fiveStar">
@@ -59,7 +60,7 @@
                 </div>
                 <div class="form-group">
                     <p>口コミを投稿</p>
-                    <textarea class="form__rate-comment" col="50" name="comment"></textarea>
+                    <textarea class="form__rate-comment" col="50" name="comment">{{ $rating->comment }}</textarea>
                     <div class="form__error">
                         @if ($errors->has('comment'))
                             {{$errors->first('comment')}}
@@ -70,7 +71,7 @@
                     <label class="img__upload">
                         <p>クリックして画像を追加</p>
                         <p>またはドラッグアンドドロップ</p>
-                        <input class="img__upload-btn" type="file" name="profile_img" accept=".jpg, .jpeg, .png">
+                        <input class="img__upload-btn" type="file" name="rating_img" accept=".jpg, .jpeg, .png">
                     </label>
                     <div class="form__error">
                         @if ($errors->has('rating_img'))

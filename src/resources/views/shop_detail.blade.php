@@ -44,9 +44,8 @@
             <div class="shop__contents-rating">
                 <div>
                     <form class="shop__rating-edit" action="/rate/edit/
-                    {{$rating->id}}" method="post">
+                    {{$rating->id}}" method="get">
                     @csrf
-                    @method('PUT')
                     <button class="rsv__rate--btn" type="submit">口コミを編集</button>
                     </form>
                     <form class="shop__rating-delete" action="/rate/delete/

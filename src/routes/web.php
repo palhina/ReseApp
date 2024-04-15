@@ -33,7 +33,7 @@ Route::middleware(['auth','verified','web'])->group(function () {
     Route::post('/favorite/{id}', [FavoriteController::class, 'favorite']);
     Route::delete('/fav_delete_shop/{id}', [FavoriteController::class, 'deleteShopAll']);
     Route::delete('/fav_delete_mypage/{id}', [FavoriteController::class, 'deleteMyPage']);
-    // 評価機能
+    // 口コミ機能
     Route::get('/rate/{id}', [RatingController::class, 'rate']);
     Route::post('/rate/{id}', [RatingController::class, 'review']);
     Route::get('/rate/edit/{id}', [RatingController::class, 'editRating']);

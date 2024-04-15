@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
 use App\Models\Rating;
 use App\Http\Requests\RatingRequest;
+use Illuminate\Support\Facades\Storage;
 
 class RatingController extends Controller
 {
@@ -22,27 +23,40 @@ class RatingController extends Controller
     {
         $user = Auth::user();
         $shop = Shop::find($id);
+        $img = null;
+        if ($request->hasFile('rating_img'))
+        {
+            $filename=$request->rating_img->getClientOriginalName();
+            $img = Storage::disk('s3')->putFileAs('image', $request->file('rating_img'), $filename, 'public');
+        }
         Rating::create([
             'user_id' => $user->id,
             'shop_id' => $shop->id,
             'rating' => $request->input('rating'),
             'comment' => $request->input('comment'),
-            // 画像処理追加
+            'rating_img' => $img,
         ]);
         return view('thanks_rate');
     }
 
     // 口コミ編集ページ表示
-    public function editRating()
+    public function editRating($id)
     {
-
+        $rating = Rating::find($id);
+        $shopId = $rating->shop_id;
+        $shop = Shop::find($shopId);
+        return view('edit_rating',compact('rating','shop'));
     }
 
     // 口コミ編集処理
-    public function updateRating()
+    public function updateRating(RatingRequest $request,$id)
     {
-        
-        return view('rating',compact('shop','user'));
+        $rating = Rating::find($id);
+        $shopId = $rating->shop_id;
+        $shop = Shop::find($shopId);
+        $form = $request->all();
+        $rating->update($form);
+        return redirect()->route('shop.detail',['id' => $shop->id])->with('result', '口コミを編集しました');
     }
 
     // 口コミ削除
