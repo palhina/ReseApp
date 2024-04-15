@@ -30,11 +30,12 @@
         </div>
         <div class="shop__rating-all">
             <h3 class="rating__ttl">全ての口コミ情報</h3>
+            @foreach ($ratings as $rating)
             <div>
-                <!-- atforeach comments as comment -->
-                <div>星</div>
-                <p>コメント</p>
+                <div>{{$rating->rating}}</div>
+                <p>{{$rating->comment}}</p>
             </div>
+            @endforeach
         </div>
     </div>
 

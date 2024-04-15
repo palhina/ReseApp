@@ -12,8 +12,9 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\EmailVerificationController;
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/detail/{id}', [HomeController::class, 'detail']);
+Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('shop.detail');
 Route::post('/search', [ShopController::class, 'search']);
+Route::get('/rate/all/{id}', [RatingController::class, 'ratingAll']);
 
 // 二段階認証
 Route::get('/email/verify',[EmailVerificationController::class,'notification'])->middleware('auth')->name('verification.notice');
@@ -35,6 +36,9 @@ Route::middleware(['auth','verified','web'])->group(function () {
     // 評価機能
     Route::get('/rate/{id}', [RatingController::class, 'rate']);
     Route::post('/rate/{id}', [RatingController::class, 'review']);
+    Route::get('/rate/edit/{id}', [RatingController::class, 'editRating']);
+    Route::put('/rate/edit/{id}', [RatingController::class, 'updateRating']);
+    Route::delete('/rate/delete/{id}', [RatingController::class, 'deleteRating']);
     // 決済
     Route::prefix('/payment')->name('payment.')->group(function () {
         Route::get('/create', [PaymentController::class, 'create'])->name('create');

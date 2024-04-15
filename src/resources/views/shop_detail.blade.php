@@ -6,6 +6,11 @@
 
 @section('content')
     <div class="shop-detail__wrapper">
+        @if (session('result'))
+            <div class="flash_message">
+                {{ session('result') }}
+            </div>
+        @endif
         <div class="shop__contents">
             <div class="shop__contents-info">
                 <div class="shop__contents-ttl">
@@ -29,40 +34,49 @@
             </div>
             <div>
                 <form class="shop__rating" action="/rate/all/
-                {$shop->id}" method="get">
+                {{$shop->id}}" method="get">
                 @csrf
                 <button class="rsv__rate--btn">全ての口コミ情報</button>
                 </form>
             </div>
-            <!-- 口コミ未投稿で表示、rating表示 -->
-            <div class="shop__contents-rating">
-                <form class="shop__rating" action="/rate/
-                {$shop->id}" method="get">
-                @csrf
-                <button class="rsv__rate--btn">口コミを投稿する</button>
-                </form>
-            </div>
-            <!-- 口コミ投稿済みで表示 -->
+
+            @if (Auth::guard('web')->check() && $rating !== null)
             <div class="shop__contents-rating">
                 <div>
                     <form class="shop__rating-edit" action="/rate/edit/
-                    {$shop->id}" method="post">
+                    {{$rating->id}}" method="post">
                     @csrf
                     @method('PUT')
-                    <button class="rsv__rate--btn">口コミを編集</button>
+                    <button class="rsv__rate--btn" type="submit">口コミを編集</button>
                     </form>
                     <form class="shop__rating-delete" action="/rate/delete/
-                    {$shop->id}" method="post">
+                    {{$rating->id}}" method="post">
                     @method('DELETE')
                     @csrf
-                    <button class="rsv__rate--btn">口コミを削除</button>
+                    <button class="rsv__rate--btn" type="submit">口コミを削除</button>
                     </form>
                 </div>
                 <div>
-                    <p>ほし：数字に合わせて星の数変更</p>
-                    <p>コメント</p>
+                    <p>{{ $rating->rating }}</p>
+                    <p>{{ $rating->comment }}</p>
+                    @if (strpos($rating->rating_img, '/images/') === 0)
+                        <img class="shop__img" src="{{ $shop->shop_photo }}">
+                    @elseif ($rating->rating_img)
+                        <img class="shop__img" src="{{ Storage::disk('s3')->url($shop->shop_photo) }}">
+                    @endif
                 </div>
             </div>
+            @else
+                <div class="shop__contents-rating">
+                    <form class="shop__rating" action="/rate/
+                    {{$shop->id}}" method="get">
+                    @csrf
+                    <button class="rsv__rate--btn">口コミを投稿する</button>
+                    </form>
+                </div>
+            @endif
+
+            
         </div>
         <div class="shop__rsv">
             <h3 class="rsv__ttl">予約</h3>

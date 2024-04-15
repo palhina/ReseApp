@@ -8,6 +8,7 @@ use App\Models\Reservation;
 use App\Models\Favorite;
 use App\Models\Area;
 use App\Models\Genre;
+use App\Models\Rating;
 
 class HomeController extends Controller
 {
@@ -35,7 +36,15 @@ class HomeController extends Controller
     public function detail($id)
     {
         $shop = Shop::find($id);
-        return view('shop_detail',compact('shop'));
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
+            $rating = Rating::where('shop_id',$shop->id)
+                ->where('user_id',$userId)
+                ->first();
+            return view('shop_detail',compact('shop','rating'));
+        }else{
+            return view('shop_detail',compact('shop'));
+        }
     }
 
     // サンクスページ
