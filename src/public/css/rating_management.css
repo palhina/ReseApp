@@ -48,25 +48,22 @@
 
 /* レスポンシブデザイン */
 @media screen and (max-width: 768px) {
-    .booking__wrapper {
+    .ratings__wrapper {
         width: 100%;
     }
 
-    .booking__list {
+    .rating__list {
         display: block;
     }
 
-    .booking__content {
+    .rating__content {
         width: 80%;
         margin: 20px auto;
         padding: 10px;
     }
 
-    .booking__card {
+    .rating__card {
         display: block;
     }
 
-    .booking__date {
-        display: block;
-    }
 }
