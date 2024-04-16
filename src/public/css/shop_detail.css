@@ -1,3 +1,11 @@
+.flash_message {
+    text-align: center;
+    margin: 30px;
+    color: #ff0000;
+    background-color: #fff;
+    padding: 30px;
+}
+
 .shop-detail__wrapper {
     display: flex;
     justify-content: space-around;
@@ -20,7 +28,7 @@
 }
 
 .shop__contents {
-    width: 50%;
+    width: 45%;
 }
 
 .shop__contents-ttl {
@@ -29,7 +37,7 @@
 }
 
 .shop__contets-img {
-    width: 100%;
+    width: 95%;
 }
 
 .shop__img {
@@ -39,6 +47,49 @@
 .shop__contents-tag {
     display: flex;
     justify-content: left;
+}
+
+.rate__all{
+    width: 100%;
+    background-color: #007bff;
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+    border-style: none;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.shop__contents--rating{
+    margin: 20px 0;
+    border-top: 1px solid #B7B7B7;
+    border-bottom: 1px solid #B7B7B7;
+    padding: 10px 20px;
+}
+
+.rating__edit--btn{
+    display: flex;
+    justify-content: right;
+}
+
+.shop__rating--edit{
+    margin: 10px;
+}
+
+.rating__img--wrapper{
+    width: 50%;
+    margin: auto;
+}
+
+.rating__img {
+    width: 100%;
+}
+
+.rsv__rate--btn {
+    font-size: medium;
+    text-decoration: underline;
+    border-style: none;
+    cursor: pointer;
 }
 
 .shop__rsv {
@@ -85,7 +136,6 @@
 .rsv__contents {
     width: 50%;
 }
-
 
 .form__button-rsv {
     position: absolute;

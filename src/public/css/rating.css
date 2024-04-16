@@ -2,8 +2,6 @@
     display: flex;
     justify-content: space-around;
     width: 100%;
-    margin: 30px 0;
-    padding-top: 30px;
 }
 
 .back {
@@ -20,12 +18,23 @@
 }
 
 .shop__contents {
-    width: 40%;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    border-right: 1px solid #B7B7B7;
 }
 
-.shop__contents-ttl {
-    display: flex;
-    justify-content: left;
+.contents__ttl {
+    font-size: 30px;
+    padding: 0 25%;
+}
+
+.shop__contents--card{
+    width: 45%;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 3px 3px 3px #B7B7B7;
 }
 
 .shop__contets-img {
@@ -36,26 +45,33 @@
     width: 100%;
 }
 
-.shop__contents-tag {
+.shop__contents--desc{
+    padding: 20px;
+}
+
+.card-name{
+    font-size: larger;
+    font-weight: bolder;
+    margin: 0;
+}
+
+.card-tag {
     display: flex;
     justify-content: left;
 }
 
-.shop__rate {
-    background-color: #FFF;
+.to-shop-detail{
+    background-color: #3560F6;
+    border-style: none;
+    color: #fff;
+    padding: 5px 10px;
     border-radius: 5px;
-    box-shadow: 5px 5px 5px #B7B7B7;
-    width: 50%;
-    position: relative;
-    padding: 30px;
+    cursor: pointer;
 }
 
-.shop__rate-txt{
-    margin: 30px 0px;
-}
-
-.shop__rate-form{
-    margin: 50px 0px;
+.shop__rate {
+    width: 60%;
+    padding: 0 5%;
 }
 
 .form__group {
@@ -63,6 +79,10 @@
     margin: 20px;
 }
 
+.form__rating{
+    font-size: larger;
+    font-weight: bold;
+}
 
 .form__error {
     color: #3560F6;
@@ -73,7 +93,7 @@
 .form__fiveStar {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-around;
+    justify-content: flex-end;
 }
 
 .form__fiveStar .star-input {
@@ -102,23 +122,47 @@
 .form__fiveStar .star:hover,
 .form__fiveStar .star:hover~.star,
 .form__fiveStar .star-input:checked~.star {
-    color: #ffcc00;
+    color: #3560F6;
 }
 
 .form__rate-comment{
     width: 100%;
-    height: 100px;
     border-radius: 5px;
-    border-style: solid;
+    border: 1px solid #B7B7B7;
+    background-color: #F2F2F2;
+    height: 150px;
+}
+
+.form__rate-comment::placeholder {
+    color: #B7B7B7;
+}
+
+.img__upload {
+    padding: 10px 40px;
+    background-color: #fff;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.img__upload-btn{
+    display: none;
+}
+
+.form__button {
+    text-align: center;
 }
 
 .form__button-rate{
-    color: #FFF;
-    background-color:#3560F6;
-    margin: 30px 0;
-    padding: 10px;
-    border-radius: 5px;
+    background-color: #fff;
+    padding: 10px 20%;
+    border-radius: 25px;
     border: none;
+    font-size: large;
+    cursor: pointer;
 }
 
 /* レスポンシブ */
@@ -130,11 +174,21 @@
     .shop__contents {
         width: 80%;
         margin: auto;
+        border-right: none;
+    }
+
+    .contents__ttl {
+        font-size: 20px;
+        padding: 0 10px;
+    }
+
+    .shop__contents--card {
+        width: 80%;
     }
 
     .shop__rate {
         width: 80%;
-        margin: auto;
+        margin: 10px auto;
     }
 
     .shop__rate-form {

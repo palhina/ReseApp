@@ -18,7 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('shop_id');
             $table->integer('rating');
-            $table->text('comment')->nullable();
+            $table->text('comment',400)->nullable();
+            $table->string('rating_img',2000)->nullable();
+            $table->unique(['user_id', 'shop_id']);
             $table->timestamps();
         });
     }
