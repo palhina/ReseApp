@@ -93,6 +93,6 @@ class RatingController extends Controller
     public function managementDeleteRating($id)
     {
         Rating::find($id)->delete();    
-        return redirect("/management/rate");
+        return redirect("/management/rate")->with('result', '口コミを削除しました');
     }
 }

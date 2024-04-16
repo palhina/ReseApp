@@ -6,6 +6,11 @@
 
 @section('content')
     <div class="ratings__wrapper">
+        @if (session('result'))
+            <div class="flash_message">
+                {{ session('result') }}
+            </div>
+        @endif
         <h2 class="rating__ttl">口コミ一覧</h2>
         <div class="rating__list">
             @foreach($shops as $shop)
