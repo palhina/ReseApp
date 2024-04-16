@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
+    @if (session('result'))
+        <div class="flash_message">
+            {{ session('result') }}
+        </div>
+    @endif
     <div class="shop-detail__wrapper">
-        @if (session('result'))
-            <div class="flash_message">
-                {{ session('result') }}
-            </div>
-        @endif
         <div class="shop__contents">
             <div class="shop__contents-info">
                 <div class="shop__contents-ttl">
@@ -32,23 +32,21 @@
                     <p>{{ $shop->shop_comment }}</p>
                 </div>
             </div>
-            <div>
-                <form class="shop__rating" action="/rate/all/
-                {{$shop->id}}" method="get">
-                @csrf
-                <button class="rsv__rate--btn">全ての口コミ情報</button>
-                </form>
-            </div>
 
             @if (Auth::guard('web')->check() && $rating !== null)
-            <div class="shop__contents-rating">
-                <div>
-                    <form class="shop__rating-edit" action="/rate/edit/
+            <form class="shop__rating--all" action="/rate/all/
+                {{$shop->id}}" method="get">
+                @csrf
+                    <button class="rate__all">全ての口コミ情報</button>
+            </form>
+            <div class="shop__contents--rating">
+                <div class="rating__edit--btn">
+                    <form class="shop__rating--edit" action="/rate/edit/
                     {{$rating->id}}" method="get">
                     @csrf
                     <button class="rsv__rate--btn" type="submit">口コミを編集</button>
                     </form>
-                    <form class="shop__rating-delete" action="/rate/delete/
+                    <form class="shop__rating--edit" action="/rate/delete/
                     {{$rating->id}}" method="post">
                     @method('DELETE')
                     @csrf
@@ -58,11 +56,13 @@
                 <div>
                     <p>{{ $rating->rating }}</p>
                     <p>{{ $rating->comment }}</p>
-                    @if (strpos($rating->rating_img, '/images/') === 0)
-                        <img class="shop__img" src="{{ $shop->shop_photo }}">
-                    @elseif ($rating->rating_img)
-                        <img class="shop__img" src="{{ Storage::disk('s3')->url($shop->shop_photo) }}">
-                    @endif
+                    <div class="rating__img--wrapper">
+                        @if (strpos($rating->rating_img, '/images/') === 0)
+                            <img class="rating__img" src="{{ $rating->rating_img }}">
+                        @elseif ($rating->rating_img)
+                            <img class="rating__img" src="{{ Storage::disk('s3')->url($rating->rating_img) }}">
+                        @endif
+                    </div>
                 </div>
             </div>
             @else
@@ -70,12 +70,10 @@
                     <form class="shop__rating" action="/rate/
                     {{$shop->id}}" method="get">
                     @csrf
-                    <button class="rsv__rate--btn">口コミを投稿する</button>
+                        <button class="rsv__rate--btn">口コミを投稿する</button>
                     </form>
                 </div>
-            @endif
-
-            
+            @endif    
         </div>
         <div class="shop__rsv">
             <h3 class="rsv__ttl">予約</h3>

@@ -14,7 +14,6 @@ use App\Http\Controllers\EmailVerificationController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('shop.detail');
 Route::post('/search', [ShopController::class, 'search']);
-Route::get('/rate/all/{id}', [RatingController::class, 'ratingAll']);
 
 // 二段階認証
 Route::get('/email/verify',[EmailVerificationController::class,'notification'])->middleware('auth')->name('verification.notice');
@@ -34,11 +33,14 @@ Route::middleware(['auth','verified','web'])->group(function () {
     Route::delete('/fav_delete_shop/{id}', [FavoriteController::class, 'deleteShopAll']);
     Route::delete('/fav_delete_mypage/{id}', [FavoriteController::class, 'deleteMyPage']);
     // 口コミ機能
-    Route::get('/rate/{id}', [RatingController::class, 'rate']);
-    Route::post('/rate/{id}', [RatingController::class, 'review']);
-    Route::get('/rate/edit/{id}', [RatingController::class, 'editRating']);
-    Route::put('/rate/edit/{id}', [RatingController::class, 'updateRating']);
-    Route::delete('/rate/delete/{id}', [RatingController::class, 'deleteRating']);
+    Route::prefix('rate')->group(function () {
+        Route::get('/{id}', [RatingController::class, 'rate']);
+        Route::post('/{id}', [RatingController::class, 'review']);
+        Route::get('/all/{id}', [RatingController::class, 'ratingAll']);
+        Route::get('/edit/{id}', [RatingController::class, 'editRating']);
+        Route::put('/edit/{id}', [RatingController::class, 'updateRating']);
+        Route::delete('/delete/{id}', [RatingController::class, 'deleteRating']);
+    });
     // 決済
     Route::prefix('/payment')->name('payment.')->group(function () {
         Route::get('/create', [PaymentController::class, 'create'])->name('create');
@@ -91,4 +93,7 @@ Route::middleware('auth.admins:admins')->group(function (){
     // お知らせメール送信
     Route::get('/send_email', [MailController::class, 'email']);
     Route::post('/send_email', [MailController::class, 'sendEmail']);
+    // 口コミ管理
+    Route::get('/management/rate', [RatingController::class, 'managementRating']);
+    Route::delete('/management/rate/{id}', [RatingController::class,   'managementDeleteRating']);
 });

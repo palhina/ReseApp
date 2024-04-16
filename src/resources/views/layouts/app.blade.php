@@ -48,6 +48,7 @@
                     <p>管理者権限でログイン中</p>
                     <li class="hamburger-menu__list"><a class="menu__link" href="/register/manager">店舗代表者新規作成</a></li>
                     <li class="hamburger-menu__list"><a class="menu__link" href="/send_email">メール送信</a></li>
+                    <li class="hamburger-menu__list"><a class="menu__link" href="/management/rate">口コミ管理</a></li>
                     <li class="hamburger-menu__list">
                         <form class="form" action="/logout/admin" method="post">
                         @csrf

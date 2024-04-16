@@ -69,11 +69,30 @@ class RatingController extends Controller
         return redirect()->route('shop.detail',['id' => $shop->id])->with('result', '口コミを削除しました');
     }
 
-    // 全ての口コミを表示
+    // 店舗内全ての口コミを表示(ユーザー)
     public function ratingAll($id)
     {
         $shop = Shop::find($id);
         $ratings = Rating::where('shop_id',$shop->id)->get();
         return view('rating_all',compact('shop','ratings'));
+    }
+
+    // 全ての口コミを表示（管理者）
+    public function managementRating()
+    {
+        $shops = Shop::all();
+        $ratings = collect();
+        foreach ($shops as $shop) {
+            $shopRatings = Rating::where('shop_id', $shop->id)->get();
+            $ratings = $ratings->merge($shopRatings);
+        }
+        return view('rating_management',compact('shops','ratings'));
+    }
+
+    // 口コミ削除(管理者)
+    public function managementDeleteRating($id)
+    {
+        Rating::find($id)->delete();    
+        return redirect("/management/rate");
     }
 }

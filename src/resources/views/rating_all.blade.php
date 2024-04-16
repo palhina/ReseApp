@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/shop_detail.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/rating_all.css') }}">
 @endsection
 
 @section('content')
@@ -31,9 +31,16 @@
         <div class="shop__rating-all">
             <h3 class="rating__ttl">全ての口コミ情報</h3>
             @foreach ($ratings as $rating)
-            <div>
+            <div class="shop__contents--rating">
                 <div>{{$rating->rating}}</div>
                 <p>{{$rating->comment}}</p>
+                <div class="rating__img--wrapper">
+                    @if (strpos($rating->rating_img, '/images/') === 0)
+                        <img class="rating__img" src="{{ $rating->rating_img }}">
+                    @elseif ($rating->rating_img)
+                        <img class="rating__img" src="{{ Storage::disk('s3')->url($rating->rating_img) }}">
+                    @endif
+                </div>
             </div>
             @endforeach
         </div>
