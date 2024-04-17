@@ -29,13 +29,13 @@
                     </form>
                     <div class="shop-all__fav-btn">
                         @if ($shop->isFavorite)
-                            <form class="fav__delete" method="post" action="/fav_delete_shop/{{ $shop->id }}">
+                            <form class="fav__delete" method="post" action="/favorite_delete/{{ $shop->id }}">
                                 @method('DELETE')
                                 @csrf
                                 <button class="fav-btn__favorite" type="submit"></button>
                             </form>
                         @else
-                            <form  class="fav__add" method="post" action="/favorite/{{ $shop->id }}">
+                            <form  class="fav__add" method="post" action="/favorite_add/{{ $shop->id }}">
                                 @csrf
                                 <button class="fav-button__not" type="submit"></button>
                             </form>

@@ -44,9 +44,11 @@ class RatingController extends Controller
     // 口コミ編集ページ表示
     public function editRating($id)
     {
+        $user = Auth::user();
         $rating = Rating::find($id);
         $shopId = $rating->shop_id;
         $shop = Shop::find($shopId);
+        $shop->isFavorite = Favorite::isFavorite($shop->id, $user->id)->exists();
         return view('edit_rating',compact('rating','shop'));
     }
 
