@@ -72,8 +72,9 @@
                     <label class="img__upload">
                         <p>クリックして画像を追加</p>
                         <p>またはドラッグアンドドロップ</p>
-                        <input class="img__upload-btn" type="file" name="rating_img" accept=".jpg, .jpeg, .png" form="rate">
+                        <input class="img__upload-btn" type="file" name="rating_img" accept=".jpg, .jpeg, .png" form="rate" onchange="displayFileName(this)">
                     </label>
+                    <p id="file-name"></p>
                     <div class="form__error">
                         @if ($errors->has('rating_img'))
                             {{$errors->first('rating_img')}}
@@ -91,3 +92,4 @@
     </form>
 @endsection
 <script src="{{ asset('js/commentcount.js') }}"></script>
+<script src="{{ asset('js/inputfile.js') }}"></script>
