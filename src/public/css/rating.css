@@ -169,6 +169,7 @@
 @media screen and (max-width: 768px) {
     .shop-detail__wrapper {
         display: block;
+        height: fit-content;
     }
 
     .shop__contents {
