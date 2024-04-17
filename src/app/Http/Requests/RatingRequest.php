@@ -37,8 +37,8 @@ class RatingRequest extends FormRequest
             'rating.in' => '評価は1～5で入力してください',
             'comment.max' => 'コメントは400文字以下で入力してください',
             'comment.string' => 'コメントは文字列で入力してください',
-            'rating_img.image' => '画像ファイルを選択してください',
-            'rating_img.mines' => 'JPEGまたはPNG形式の画像を入力してください',
+            'rating_img.image' => 'JPEGまたはPNG形式の画像を入力してください',
+            'rating_img.mimes' => 'JPEGまたはPNG形式の画像を入力してください',
         ];
     }
 }

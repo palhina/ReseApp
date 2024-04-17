@@ -10,6 +10,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\EmailVerificationController;
+use App\Http\Controllers\CsvController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('shop.detail');
@@ -95,5 +96,10 @@ Route::middleware('auth.admins:admins')->group(function (){
     Route::post('/send_email', [MailController::class, 'sendEmail']);
     // 口コミ管理
     Route::get('/management/rate', [RatingController::class, 'managementRating']);
-    Route::delete('/management/rate/{id}', [RatingController::class,   'managementDeleteRating']);
+    Route::delete('/management/rate/{id}', [RatingController::class, 'managementDeleteRating']);
+    // CSV登録（動作確認後ここへ）
+    
 });
+Route::get('/csv_upload', [CsvController::class, 'csvUpload']);
+    Route::post('/csv_upload', [CsvController::class, 'importCsv']);
+    Route::post('/csv_export', [CsvController::class, 'downloadCsv']);

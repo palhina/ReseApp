@@ -37,13 +37,15 @@ class ShopController extends Controller
             $query->inRandomOrder();
         }
         elseif ($sort === 'ratingDesc') {
-            $query = Shop::all();    
+            // 評価式書く
+            $query = Shop::all();
         }
         elseif ($sort === 'ratingAsc'){
+            // 評価式書く
             $query->averageRatingAscSortable();
         }
         $shops = $query->get();
-        
+
         $areas = Area::all();
         $genres = Genre::all();
         if (Auth::check()) {
@@ -129,5 +131,4 @@ class ShopController extends Controller
         $genres = Genre::all();
         return view('edit_shop',compact('shops','areas','genres'));
     }
-
 }

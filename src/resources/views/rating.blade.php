@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/rating.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fav.css') }}">
 @endsection
 
 @section('content')
@@ -27,7 +28,18 @@
                         <button class="to-shop-detail" form="detail">詳しく見る</button>
                     </form>
                     <div class="shop-all__fav-btn">
-                    <!-- お気に入りハート実装 -->
+                        @if ($shop->isFavorite)
+                            <form class="fav__delete" method="post" action="/fav_delete_shop/{{ $shop->id }}">
+                                @method('DELETE')
+                                @csrf
+                                <button class="fav-btn__favorite" type="submit"></button>
+                            </form>
+                        @else
+                            <form  class="fav__add" method="post" action="/favorite/{{ $shop->id }}">
+                                @csrf
+                                <button class="fav-button__not" type="submit"></button>
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>

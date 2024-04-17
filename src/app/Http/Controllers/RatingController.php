@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
 use App\Models\Rating;
+use App\Models\Favorite;
 use App\Http\Requests\RatingRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,6 +16,7 @@ class RatingController extends Controller
     {
         $user = Auth::user();
         $shop = Shop::find($id);
+        $shop->isFavorite = Favorite::isFavorite($shop->id, $user->id)->exists();
         return view('rating',compact('shop','user'));
     }
 
