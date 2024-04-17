@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/rating_management.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/star_rating.css') }}">
 @endsection
 
 @section('content')
@@ -24,7 +25,7 @@
                         <h3 class="shop__name">店舗名:{{$shop->shop_name}}</h3>
                         @foreach($shopRatings as $rating)
                         <div class="rating__card">
-                            <p class="rating">{{$rating->rating}}</p>
+                            <p class="rating"><span class="star5_rating" data-rate="{{ $rating->rating }}"></span></p>
                             <p class="rating__comment">{{$rating->comment}}</p>
                             <div class="rating__image">
                                 @if (strpos($rating->rating_img, '/images/') === 0)

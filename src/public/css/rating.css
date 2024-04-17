@@ -137,6 +137,10 @@
     color: #B7B7B7;
 }
 
+.count{
+    text-align: right;
+}
+
 .img__upload {
     padding: 10px 40px;
     background-color: #fff;
