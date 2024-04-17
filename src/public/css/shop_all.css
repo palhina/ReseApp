@@ -2,11 +2,16 @@
     width: 100%;
 }
 
+.search-bar{
+    display: flex;
+    justify-content: flex-end;
+}
+
 .search-form {
     display: flex;
     justify-content: space-around;
     width: 50%;
-    margin: 0 5% 0 auto;
+    margin: 0 10px;
     background-color: #fff;
     padding: 10px;
     border-radius: 5px;
