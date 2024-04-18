@@ -16,6 +16,7 @@
             <li class="menu__info"><a class="menu__list" href="/register/manager">店舗代表者新規作成</a></li>
             <li class="menu__info"><a class="menu__list" href="/send_email">メール送信</a></li>
             <li class="menu__info"><a class="menu__list" href="/management/rate">口コミ管理</a></li>
+            <li class="menu__info"><a class="menu__list" href="/csv_upload">CSVインポート</a></li>
         </ul>
     </div>
 @endsection

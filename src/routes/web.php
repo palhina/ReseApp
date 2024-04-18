@@ -100,9 +100,9 @@ Route::middleware('auth.admins:admins')->group(function (){
     // 口コミ管理
     Route::get('/management/rate', [RatingController::class, 'managementRating']);
     Route::delete('/management/rate/{id}', [RatingController::class, 'managementDeleteRating']);
-    // CSV登録（動作確認後ここへ）
-    
-});
-Route::get('/csv_upload', [CsvController::class, 'csvUpload']);
+    // CSVファイル
+    Route::get('/csv_upload', [CsvController::class, 'csvUpload']);
     Route::post('/csv_upload', [CsvController::class, 'importCsv']);
     Route::post('/csv_export', [CsvController::class, 'downloadCsv']);
+});
+

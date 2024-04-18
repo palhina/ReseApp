@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shop;
-use Goodby\CSV\Import\Standard\LexerConfig;
-use Goodby\CSV\Import\Standard\Lexer;
-use Goodby\CSV\Import\Standard\Interpreter;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CsvController extends Controller
 {
@@ -20,31 +19,34 @@ class CsvController extends Controller
     // CSVインポート処理
     public function importCsv(Request $request)
     {
-        $file = $request->file('file');
+        if ($request->hasFile('csvFile')) {
+            $file = $request->file('csvFile');
+            $path = $file->getRealPath();
 
-        $config = new LexerConfig();
-        $interpreter = new Interpreter();
-        $lexer = new Lexer($config);
+            $fp = fopen($path, 'r');
+            fgetcsv($fp);
+            while (($csvData = fgetcsv($fp)) !== FALSE) {
+                $this->InsertCsvData($csvData);
+            }
+            fclose($fp);
+            return redirect('/csv_upload')->with('result', '店舗情報を追加しました');
+        } else {
+            throw new \Exception('CSVファイルが取得できませんでした。');
+        }
+    }
 
-        $config->setToCharset("UTF-8");
-        $config->setFromCharset("sjis-win");
-        $dataList = [];
-
-        $interpreter->addObserver(function (array $row) use (&$dataList,$areaList, $genreList){
-
-            $areaName = $row[0];
-            $genreName = $row[1];
-            $areaId = $areaList[$areaName];
-            $genreId = $genreList[$genreName];
-            Shop::insert([
-                'area_id' => $areaId,
-                'genre' => $genreId,
-                'shop_name' => $row[2],
-                'shop_photo' => $row[3],
-                'shop_comment' => $row[4]
-            ]);
-        });
-        return redirect('/csv_upload')->with('result', 'CSVデータを読み込みました');
+    public function InsertCsvData($csvData)
+    {
+        if (count($csvData) < 5) {
+            throw new \Exception('CSVデータの形式が正しくありません。');
+        }
+        $shop = new Shop;
+        $shop->area_id = $csvData[0];
+        $shop->genre_id = $csvData[1];
+        $shop->shop_name = $csvData[2];
+        $shop->shop_photo = $csvData[3];
+        $shop->shop_comment = $csvData[4];
+        $shop->save();
     }
 
     // CSVテンプレートのダウンロード
@@ -57,14 +59,14 @@ class CsvController extends Controller
         if (! file_exists(storage_path('csv'))) {
             $bool = mkdir(storage_path('csv'));
             if (! $bool) {
-                throw new \Exception("ディレクトリを作成できませんでした。");
+                throw new \Exception("ディレクトリを作成できません。");
             }
         }
         $name = 'shop.csv';
         $pathToFile = storage_path('csv/' . $name);
 
         if (! file_put_contents($pathToFile, $downloadData)) {
-            throw new \Exception("ファイルの書き込みに失敗しました。"); 
+            throw new \Exception("ファイルの書き込みに失敗しました。");
         }
 
         return response()->download($pathToFile, $name)->deleteFileAfterSend(true);
