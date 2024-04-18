@@ -8,6 +8,7 @@ use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Favorite;
+use App\Models\Rating;
 use App\Http\Requests\ShopRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,36 +17,54 @@ class ShopController extends Controller
     // 検索機能
     public function search(Request $request)
     {
-        $areas = Area::all();
-        $genres = Genre::all();
         $shop_area = $request->input('shop_area');
         $shop_genre = $request->input('shop_genre');
         $keyword = $request->input('keyword');
+        $sort = $request->input('sort');
         $query = Shop::query();
 
-        if (!empty($shop_area)) {
+        if ($shop_area){
             $query->where('area_id', $shop_area);
         }
-        if (!empty($shop_genre)) {
+        if ($shop_genre) {
             $query->where('genre_id', $shop_genre);
         }
-        if (!empty($keyword)) {
+        if ($keyword) {
             $query->where('shop_name', 'LIKE', '%' . $keyword . '%');
         }
-        $results = $query->get();
 
-        // 検索後お気に入り表示
-        $favorites = [];
+        if ($sort === 'random') {
+            $query->inRandomOrder();
+        }
+        elseif ($sort === 'ratingDesc') {
+            $query->select('shops.*')
+                ->selectRaw('AVG(ratings.rating) as averageRating')
+                ->leftJoin('ratings', 'shops.id', '=', 'ratings.shop_id')
+                ->groupBy('shops.id')
+                ->orderByDesc('averageRating');
+        }
+        elseif ($sort === 'ratingAsc'){
+            $query->select('shops.*')
+                ->selectRaw('ifnull(AVG(ratings.rating), 0) as averageRating')
+                ->leftJoin('ratings', 'shops.id', '=', 'ratings.shop_id')
+                ->groupBy('shops.id')
+                ->orderByRaw('if(ifnull(AVG(ratings.rating), 0) = 0, 1, 0), ifnull(AVG(ratings.rating), 0)');
+        }
+        $shops = $query->get();
+
+        $areas = Area::all();
+        $genres = Genre::all();
         if (Auth::check()) {
+            $favorites = [];
             $userId = Auth::user()->id;
             $favorites =  Favorite::where('user_id',$userId)->get();
-            $results->each(function ($shop) use ($userId) {
+            $shops->each(function ($shop) use ($userId) {
                 $shop->isFavorite = Favorite::isFavorite($shop->id, $userId)->exists();
             });
-        return view('results', compact('results','areas','genres','favorites'));
+            return view('shop_all', compact('shops','favorites','areas','genres'));
         }
         else{
-            return view('results', compact('results','areas','genres'));
+            return view('shop_all', compact('shops','areas','genres'));
         }
     }
 
@@ -118,5 +137,4 @@ class ShopController extends Controller
         $genres = Genre::all();
         return view('edit_shop',compact('shops','areas','genres'));
     }
-
 }

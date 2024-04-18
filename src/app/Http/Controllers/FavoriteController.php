@@ -64,4 +64,31 @@ class FavoriteController extends Controller
         ->get();
         return view('my_page',compact('user','favorites','reservations'));
     }
+
+    // お気に入り追加機能(口コミ追加・編集ページから)
+    public function addFavorite(Request $request,$id)
+    {
+        $shop = Shop::find($id);
+        $user = Auth::user();
+        Favorite::create([
+            'user_id' => $user->id,
+            'shop_id' => $shop->id,
+        ]);
+        $shop->isFavorite = Favorite::isFavorite($shop->id, $user->id)->exists();
+
+        return redirect()->route('shop.detail',['id' => $shop->id])->with('result', 'お気に入りに追加しました');
+    }
+
+    // お気に入り削除機能(口コミ追加・編集ページから)
+    public function deleteFavorite($id)
+    {
+        $shop = Shop::find($id);
+        $user = Auth::user();
+        $favorite = Favorite::where('shop_id', $id)
+            ->where('user_id', $user->id)
+            ->delete();
+        $shop->isFavorite = Favorite::isFavorite($shop->id, $user->id)->exists();
+
+        return redirect()->route('shop.detail',['id' => $shop->id])->with('result','お気に入りから削除しました');
+    }
 }

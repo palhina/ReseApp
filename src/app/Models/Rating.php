@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
-    use HasFactory;
+    use HasFactory; 
+    
     protected $fillable = 
     [
         'user_id',
@@ -26,3 +27,4 @@ class Rating extends Model
         return $this->belongsTo(Shop::class, 'shop_id');
     }
 }
+

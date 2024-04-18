@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Shop extends Model
 {
     use HasFactory;
-    protected $fillable = 
+
+    public $sortable = ['rating'];
+
+    protected $fillable =
     [
         'area_id',
         'genre_id',
@@ -29,5 +32,10 @@ class Shop extends Model
     public function manager()
     {
         return $this->belongsTo(Manager::class, 'manager_id', 'id');
+    }
+
+    public function rating()
+    {
+        return $this->hasMany(Rating::class);
     }
 }

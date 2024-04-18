@@ -2,11 +2,23 @@
     width: 100%;
 }
 
+.search-bar{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sort{
+    margin: 0 10px;
+    padding: 10px;
+    box-shadow: 5px 5px 5px #B7B7B7;
+    border-radius: 5px;
+    border-style: none
+}
+
 .search-form {
     display: flex;
     justify-content: space-around;
-    width: 50%;
-    margin: 0 5% 0 auto;
+    margin: 0 10px;
     background-color: #fff;
     padding: 10px;
     border-radius: 5px;
@@ -29,9 +41,15 @@
     border: none;
 }
 
+.search__btn-wrapper{
+    padding: 10px;
+    margin-right:10% ;
+}
+
 .search__btn{
     cursor: pointer;
     width: max-content;
+    margin: auto 0;
 }
 
 .shop-all {
@@ -88,35 +106,19 @@
     cursor: pointer;
 }
 
-.fav-button__not {
-    width: 24px;
-    height: 24px;
-    background-color: #B7B7B7;
-    clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
-    border-style: none;
-    position: absolute;
-    right: 30px;
-    bottom: 30px;
-    cursor: pointer;
-}
-
-.fav-btn__favorite{
-    background-color: red;
-    width: 24px;
-    height: 24px;
-    clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
-    border-style: none;
-    position: absolute;
-    right: 30px;
-    bottom: 30px;
-    cursor: pointer;
-}
-
 /* レスポンシブ */
 @media screen and (max-width: 768px) {
+    .search-bar {
+        display: block;
+    }
+
+    .sort {
+        margin: 10px 10px;
+    }
+
     .search-form {
         width: 90%;
-        margin: 0 30px 0 auto;
+        margin: 0 30px 10px auto;
     }
 
     .search-form__area,
@@ -129,13 +131,17 @@
     }
 
     .search__key {
-        width: auto;
+        width: 100%;
     }
 
     .search__area,
     .search__area,
     .search__genre {
         width: 100%;
+    }
+
+    .search__btn-wrapper{
+        text-align: center;
     }
 
     .search__btn{

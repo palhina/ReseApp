@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/shop_detail.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/star_rating.css') }}">
 @endsection
 
 @section('content')
@@ -54,7 +55,7 @@
                     </form>
                 </div>
                 <div>
-                    <p>{{ $rating->rating }}</p>
+                    <p><span class="star5_rating" data-rate="{{ $rating->rating }}"></span></p>
                     <p>{{ $rating->comment }}</p>
                     <div class="rating__img--wrapper">
                         @if (strpos($rating->rating_img, '/images/') === 0)

@@ -41,11 +41,25 @@ class RatingsTableSeeder extends Seeder
                 'user_id' => '1',
                 'shop_id' => '3',
                 'rating' => '3',
+                'comment' => null,
+                'rating_img' => null,
+            ],
+            [
+                'user_id' => '1',
+                'shop_id' => '4',
+                'rating' => '3',
+                'comment' => '味はまずまずで雰囲気もいいが、提供が遅く、会計もかなり待たされた',
+                'rating_img' => null,
+            ],
+            [
+                'user_id' => '2',
+                'shop_id' => '4',
+                'rating' => '2',
                 'comment' =>  null,
                 'rating_img' => null,
             ],
         ];
-        foreach ($ratings as $rating) 
+        foreach ($ratings as $rating)
         {
             Rating::create([
                 'user_id' => $rating['user_id'],

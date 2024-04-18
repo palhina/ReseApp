@@ -9,11 +9,12 @@ use App\Models\Favorite;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Rating;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     // 店舗一覧＋お気に入り（ハートマーク）表示
-    public function index()
+    public function index(Request $request)
     {
         $areas = Area::all();
         $genres = Genre::all();

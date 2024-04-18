@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('area_id');
             $table->unsignedBigInteger('genre_id');
-            $table->unsignedBigInteger('manager_id');
-            $table->text('shop_name');
+            $table->text('shop_name',50);
             $table->string('shop_photo',2000);
-            $table->text('shop_comment');
+            $table->text('shop_comment',400);
+            $table->unsignedBigInteger('manager_id')->nullable();
             $table->timestamps();
         });
     }

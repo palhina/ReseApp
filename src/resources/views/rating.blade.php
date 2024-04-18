@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/rating.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fav.css') }}">
 @endsection
 
 @section('content')
@@ -27,7 +28,18 @@
                         <button class="to-shop-detail" form="detail">詳しく見る</button>
                     </form>
                     <div class="shop-all__fav-btn">
-                    <!-- お気に入りハート実装 -->
+                        @if ($shop->isFavorite)
+                            <form class="fav__delete" method="post" action="/favorite_delete/{{ $shop->id }}">
+                                @method('DELETE')
+                                @csrf
+                                <button class="fav-btn__favorite" type="submit"></button>
+                            </form>
+                        @else
+                            <form  class="fav__add" method="post" action="/favorite_add/{{ $shop->id }}">
+                                @csrf
+                                <button class="fav-button__not" type="submit"></button>
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -57,7 +69,10 @@
                 </div>
                 <div class="form-group">
                     <p class="form__rating">口コミを投稿</p>
-                    <textarea class="form__rate-comment" col="50" name="comment" placeholder="カジュアルな夜のお出かけにお勧めのスポット" form="rate"></textarea>
+                    <textarea class="form__rate-comment" maxlength="400" name="comment" placeholder="カジュアルな夜のお出かけにお勧めのスポット" form="rate" oninput="updateCharacterCount(this)"></textarea>
+                    <p class="count">
+                        <span id="length">0</span>/400（最高文字数）
+                    </p>
                     <div class="form__error">
                         @if ($errors->has('comment'))
                             {{$errors->first('comment')}}
@@ -69,8 +84,9 @@
                     <label class="img__upload">
                         <p>クリックして画像を追加</p>
                         <p>またはドラッグアンドドロップ</p>
-                        <input class="img__upload-btn" type="file" name="rating_img" accept=".jpg, .jpeg, .png" form="rate">
+                        <input class="img__upload-btn" type="file" name="rating_img" accept=".jpg, .jpeg, .png" form="rate" onchange="displayFileName(this)">
                     </label>
+                    <p id="file-name"></p>
                     <div class="form__error">
                         @if ($errors->has('rating_img'))
                             {{$errors->first('rating_img')}}
@@ -87,3 +103,5 @@
         </div>
     </form>
 @endsection
+<script src="{{ asset('js/commentcount.js') }}"></script>
+<script src="{{ asset('js/inputfile.js') }}"></script>

@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/rating.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fav.css') }}">
 @endsection
 
 @section('content')
@@ -27,7 +28,18 @@
                         <button class="to-shop-detail" form="detail">詳しく見る</button>
                     </form>
                     <div class="shop-all__fav-btn">
-                    <!-- お気に入りハート実装 -->
+                        @if ($shop->isFavorite)
+                            <form class="fav__delete" method="post" action="/favorite_delete/{{ $shop->id }}">
+                                @method('DELETE')
+                                @csrf
+                                <button class="fav-btn__favorite" type="submit"></button>
+                            </form>
+                        @else
+                            <form  class="fav__add" method="post" action="/favorite_add/{{ $shop->id }}">
+                                @csrf
+                                <button class="fav-button__not" type="submit"></button>
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -39,16 +51,10 @@
                 <div class="form-group">
                     <p class="form__rating">体験を評価してください</p>
                     <div class="form__fiveStar">
-                        <input class="star-input" id="star1" type="radio"  name="rating" value="5" form="rate">
-                        <label for="star1" class="star">★</label>
-                        <input class="star-input" id="star2" type="radio" name="rating" value="4" form="rate">
-                        <label for="star2" class="star">★</label>
-                        <input class="star-input" id="star3" type="radio" name="rating" value="3" form="rate">
-                        <label for="star3" class="star">★</label>
-                        <input class="star-input" id="star4" type="radio" name="rating" value="2" form="rate">
-                        <label for="star4" class="star">★</label>
-                        <input class="star-input" id="star5" type="radio" name="rating" value="1" form="rate">
-                        <label for="star5" class="star">★</label>
+                        @for ($i = 5; $i >= 1; $i--)
+                            <input class="star-input" id="star{{$i}}" type="radio" name="rating" value="{{$i}}" form="rate" {{ $i == $rating->rating ? 'checked' : '' }}>
+                            <label for="star{{$i}}" class="star">★</label>
+                        @endfor
                     </div>
                     <div class="form__error">
                         @if ($errors->has('rating'))
@@ -58,7 +64,10 @@
                 </div>
                 <div class="form-group">
                     <p class="form__rating">口コミを投稿</p>
-                    <textarea class="form__rate-comment" col="50" name="comment" placeholder="カジュアルな夜のお出かけにお勧めのスポット" form="rate">{{$rating->comment}}</textarea>
+                    <textarea class="form__rate-comment" col="50" name="comment" placeholder="カジュアルな夜のお出かけにお勧めのスポット" form="rate" oninput="updateCharacterCount(this)">{{$rating->comment}}</textarea>
+                    <p class="count">
+                        <span id="length">0</span>/400（最高文字数）
+                    </p>
                     <div class="form__error">
                         @if ($errors->has('comment'))
                             {{$errors->first('comment')}}
@@ -70,8 +79,9 @@
                     <label class="img__upload">
                         <p>クリックして画像を追加</p>
                         <p>またはドラッグアンドドロップ</p>
-                        <input class="img__upload-btn" type="file" name="rating_img" accept=".jpg, .jpeg, .png" form="rate">
+                        <input class="img__upload-btn" type="file" name="rating_img" accept=".jpg, .jpeg, .png" form="rate"  onchange="displayFileName(this)">
                     </label>
+                    <p id="file-name"></p>
                     <div class="form__error">
                         @if ($errors->has('rating_img'))
                             {{$errors->first('rating_img')}}
@@ -88,4 +98,7 @@
             <button class="form__button-rate" type="submit" form="rate">口コミを投稿</button>
         </div>
     </form>
+
+    <script src="{{ asset('js/commentcount.js') }}"></script>
+    <script src="{{ asset('js/inputfile.js') }}"></script>
 @endsection

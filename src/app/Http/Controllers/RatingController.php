@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
 use App\Models\Rating;
+use App\Models\Favorite;
 use App\Http\Requests\RatingRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,6 +16,7 @@ class RatingController extends Controller
     {
         $user = Auth::user();
         $shop = Shop::find($id);
+        $shop->isFavorite = Favorite::isFavorite($shop->id, $user->id)->exists();
         return view('rating',compact('shop','user'));
     }
 
@@ -42,9 +44,11 @@ class RatingController extends Controller
     // 口コミ編集ページ表示
     public function editRating($id)
     {
+        $user = Auth::user();
         $rating = Rating::find($id);
         $shopId = $rating->shop_id;
         $shop = Shop::find($shopId);
+        $shop->isFavorite = Favorite::isFavorite($shop->id, $user->id)->exists();
         return view('edit_rating',compact('rating','shop'));
     }
 
@@ -92,7 +96,7 @@ class RatingController extends Controller
     // 口コミ削除(管理者)
     public function managementDeleteRating($id)
     {
-        Rating::find($id)->delete();    
-        return redirect("/management/rate");
+        Rating::find($id)->delete();
+        return redirect("/management/rate")->with('result', '口コミを削除しました');
     }
 }
