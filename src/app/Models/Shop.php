@@ -11,7 +11,7 @@ class Shop extends Model
 
     public $sortable = ['rating'];
 
-    protected $fillable = 
+    protected $fillable =
     [
         'area_id',
         'genre_id',
@@ -34,22 +34,8 @@ class Shop extends Model
         return $this->belongsTo(Manager::class, 'manager_id', 'id');
     }
 
-    // 平均評価順にソート
-    public function averageRatingAscSortable($query)
+    public function rating()
     {
-        return $query->join('ratings', 'shops.id', '=', 'ratings.shop_id')
-                    ->select('shops.*')
-                    ->groupBy('shops.id')
-                    ->orderByRaw('AVG(ratings.rating) ASC');
-
-    }
-
-    // 平均評価降順にソート
-    public function averageRatingDescSortable($query)
-    {
-        return $query->Leftjoin('ratings', 'shops.id', '=', 'ratings.shop_id')
-                    ->select('shops.*')
-                    ->groupBy('shops.id')
-                    ->orderByRaw('AVG(ratings.rating) DESC');
+        return $this->hasMany(Rating::class);
     }
 }

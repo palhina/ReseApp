@@ -37,12 +37,18 @@ class ShopController extends Controller
             $query->inRandomOrder();
         }
         elseif ($sort === 'ratingDesc') {
-            // 評価式書く
-            $query = Shop::all();
+            $query->select('shops.*')
+                ->selectRaw('AVG(ratings.rating) as averageRating')
+                ->leftJoin('ratings', 'shops.id', '=', 'ratings.shop_id')
+                ->groupBy('shops.id')
+                ->orderByDesc('averageRating');
         }
         elseif ($sort === 'ratingAsc'){
-            // 評価式書く
-            $query->averageRatingAscSortable();
+            $query->select('shops.*')
+                ->selectRaw('ifnull(AVG(ratings.rating), 0) as averageRating')
+                ->leftJoin('ratings', 'shops.id', '=', 'ratings.shop_id')
+                ->groupBy('shops.id')
+                ->orderByRaw('if(ifnull(AVG(ratings.rating), 0) = 0, 1, 0), ifnull(AVG(ratings.rating), 0)');
         }
         $shops = $query->get();
 

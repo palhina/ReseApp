@@ -7,10 +7,17 @@
     justify-content: flex-end;
 }
 
+.sort{
+    margin: 0 10px;
+    padding: 10px;
+    box-shadow: 5px 5px 5px #B7B7B7;
+    border-radius: 5px;
+    border-style: none
+}
+
 .search-form {
     display: flex;
     justify-content: space-around;
-    width: 50%;
     margin: 0 10px;
     background-color: #fff;
     padding: 10px;
@@ -34,9 +41,15 @@
     border: none;
 }
 
+.search__btn-wrapper{
+    padding: 10px;
+    margin-right:10% ;
+}
+
 .search__btn{
     cursor: pointer;
     width: max-content;
+    margin: auto 0;
 }
 
 .shop-all {
@@ -95,9 +108,17 @@
 
 /* レスポンシブ */
 @media screen and (max-width: 768px) {
+    .search-bar {
+        display: block;
+    }
+
+    .sort {
+        margin: 10px 10px;
+    }
+
     .search-form {
         width: 90%;
-        margin: 0 30px 0 auto;
+        margin: 0 30px 10px auto;
     }
 
     .search-form__area,
@@ -110,13 +131,17 @@
     }
 
     .search__key {
-        width: auto;
+        width: 100%;
     }
 
     .search__area,
     .search__area,
     .search__genre {
         width: 100%;
+    }
+
+    .search__btn-wrapper{
+        text-align: center;
     }
 
     .search__btn{

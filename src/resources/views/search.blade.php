@@ -1,7 +1,7 @@
 <div class="shop-all__wrapper">
     <form class="search-bar" action="/search" method="post">
     @csrf
-        <select class="search__area" name="sort">
+        <select class="sort" name="sort">
             <option value="">並び替え：評価高/低</option>
             <option value="random">ランダム</option>
             <option value="ratingDesc">評価が高い順</option>
