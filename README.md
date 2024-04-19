@@ -79,11 +79,11 @@ http://rese-aws-launch.shop
 
 １．プロジェクトを保存したいディレクトリに移動し、その後Githubからリポジトリをクローンします：
 
-        $git clone https://github.com/palhina/Rese.git
+        $git clone https://github.com/palhina/ReseApp.git
         
 その後リポジトリのディレクトリに移動します：
 
-        $cd Rese
+        $cd ReseApp
 
 ２．Dockerを使用し、アプリケーションを起動します：
 	
