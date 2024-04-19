@@ -27,6 +27,13 @@
     margin: 30px;
     text-align: center;
 }
+.error__message{
+    padding-left: 0;
+}
+
+.error__list{
+    list-style: none;
+}
 
 .csvexport__contents{
     margin: 50px;
