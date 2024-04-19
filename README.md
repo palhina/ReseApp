@@ -1,16 +1,18 @@
-# ReseApp
 # 飲食店予約サービス Rese
 
 ## アプリケーション名  
 **Rese(リーズ)**
 
-### 使用画面のイメージ  
-#### ユーザーアカウント  
+## 使用画面のイメージ  
+### ユーザーアカウント  
 ![user](https://github.com/palhina/ReseApp/assets/129643430/ca7249a0-70ab-4553-bc14-6febb47a8caa)  
-#### 店舗代表者アカウント  
+  
+### 店舗代表者アカウント  
 ![manager](https://github.com/palhina/ReseApp/assets/129643430/e702cd4a-fb8a-4c05-8433-ea1ed49c6e71)  
-#### 管理者アカウント  
+  
+### 管理者アカウント  
 ![admin](https://github.com/palhina/ReseApp/assets/129643430/b3e767c7-1a8d-424d-85fd-684d1a2de4f7)  
+  
   
 ## 作成した目的  
 ある企業のグループ会社から、自社で飲食店予約サービスを持ちたいと要望があったため  
