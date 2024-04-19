@@ -22,6 +22,19 @@
     text-align: center;
 }
 
+.form__error {
+    color: #ff0000;
+    margin: 30px;
+    text-align: center;
+}
+.error__message{
+    padding-left: 0;
+}
+
+.error__list{
+    list-style: none;
+}
+
 .csvexport__contents{
     margin: 50px;
 }
@@ -29,4 +42,31 @@
 .csv-template__export{
     margin: 50px;
     text-align: center;
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+    .csv__contents {
+        padding: 20px 10px;
+    }
+
+    .csvimport__contents {
+        margin: 10px;
+    }
+
+    .csv__import {
+        margin: 10px;
+    }
+
+    .csvimport__btn{
+        margin: 10px;
+    }
+
+    .csvexport__contents {
+        margin: 10px;
+    }
+
+    .csv-template__export {
+        margin: 10px;
+    }
 }
