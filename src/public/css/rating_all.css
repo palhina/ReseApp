@@ -58,6 +58,22 @@
     padding: 20px;
 }
 
+.rsv__rate--btn {
+    font-size: medium;
+    text-decoration: underline;
+    border-style: none;
+    cursor: pointer;
+}
+
+.rating__edit--btn {
+    display: flex;
+    justify-content: right;
+}
+
+.shop__rating--edit {
+    margin: 10px;
+}
+
 .rating__img--wrapper {
     width: 50%;
     margin: auto;
@@ -68,6 +84,25 @@
 }
 
 @media screen and (max-width: 768px) {
+    .shop-detail__wrapper {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .shop__contents {
+        width: 80%;
+        margin: auto;
+    }
+
+    .shop__rating-all {
+        width: 80%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
     .shop-detail__wrapper {
         display: block;
         width: 100%;

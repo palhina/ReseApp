@@ -106,7 +106,7 @@
     cursor: pointer;
 }
 
-/* レスポンシブ */
+/* タブレット用レスポンシブ */
 @media screen and (max-width: 768px) {
     .search-bar {
         display: block;
@@ -149,6 +149,53 @@
     }
 
     .shop-all__card{
+        width: 100%;
+    }
+}
+
+/* SP用レスポンシブ */
+@media screen and (max-width: 480px) {
+    .search-bar {
+        display: block;
+    }
+
+    .sort {
+        margin: 10px 10px;
+    }
+
+    .search-form {
+        width: 90%;
+        margin: 0 30px 10px auto;
+    }
+
+    .search-form__area,
+    .search-form__genre {
+        width: 20%;
+    }
+
+    .search-form__keyword {
+        width: 40%;
+    }
+
+    .search__key {
+        width: 100%;
+    }
+
+    .search__area,
+    .search__area,
+    .search__genre {
+        width: 100%;
+    }
+
+    .search__btn-wrapper {
+        text-align: center;
+    }
+
+    .search__btn {
+        height: auto;
+    }
+
+    .shop-all__card {
         width: 100%;
     }
 }

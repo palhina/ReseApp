@@ -33,6 +33,21 @@
             <h3 class="rating__ttl">全ての口コミ情報</h3>
             @foreach ($ratings as $rating)
             <div class="shop__contents--rating">
+                @if ($rating->user_id === auth()->user()->id)
+                <div class="rating__edit--btn">
+                    <form class="shop__rating--edit" action="/rate/edit/
+                    {{$rating->id}}" method="get">
+                    @csrf
+                    <button class="rsv__rate--btn" type="submit">口コミを編集</button>
+                    </form>
+                    <form class="shop__rating--edit" action="/rate/delete/
+                    {{$rating->id}}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <button class="rsv__rate--btn" type="submit">口コミを削除</button>
+                    </form>
+                </div>
+                @endif
                 <p><span class="star5_rating" data-rate="{{ $rating->rating }}"></span></p>
                 <p>{{$rating->comment}}</p>
                 <div class="rating__img--wrapper">

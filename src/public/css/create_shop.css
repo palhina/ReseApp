@@ -49,7 +49,37 @@
     border-style: none;
 }
 
-/* レスポンシブ */
+/* TAB用レスポンシブ */
+@media screen and (max-width: 768px) {
+    .shop-create__wrapper {
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    .shop__contents--ttl {
+        padding: 20px;
+    }
+
+    .form__group {
+        width: 100%;
+        margin: 10px;
+    }
+
+    .form__shop-comment {
+        height: 100px;
+    }
+
+    .form__error {
+        margin: 10px;
+    }
+
+    .form__shop-photo--ttl {
+        margin-top: 20px;
+    }
+
+}
+
+/* SP用レスポンシブ */
 @media screen and (max-width: 768px) {
     .shop-create__wrapper {
         width: 80%;

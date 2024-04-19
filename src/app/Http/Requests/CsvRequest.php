@@ -7,6 +7,7 @@ use SplFileObject;
 use App\Models\Area;
 use App\Models\Genre;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 
 class CsvRequest extends FormRequest
 {
@@ -27,16 +28,12 @@ class CsvRequest extends FormRequest
      */
     public function rules(): array
     {
-        $areas = Area::all();
-        $area_ids = $areas->pluck('id')->toArray();
-        $genres = Genre::all();
-        $genre_ids = $genres->pluck('id')->toArray();
 
         return [
             "csv_file" => ['required', 'file', 'mimes:csv,txt'],
             'csv_array' => ['required', 'array'],
-            'csv_array.*.area_id' => ['required', 'integer', Rule::in($area_ids)],
-            'csv_array.*.genre_id' => ['required', 'integer', Rule::in($genre_ids)],
+            'csv_array.*.area_id' => ['required'],
+            'csv_array.*.genre_id' => ['required'],
             'csv_array.*.shop_name' => ['required', 'string', 'max:50'],
             'csv_array.*.shop_photo' => ['required','ends_with:.jpg,.jpeg,.png'],
             'csv_array.*.shop_comment' => ['required', 'string', 'max:400'],
@@ -61,8 +58,24 @@ class CsvRequest extends FormRequest
                     $header = $line;
                     continue;
                 }
-                $csv_array[$index]['area_id'] = (int)$line[0];
-                $csv_array[$index]['genre_id'] = (int)$line[1];
+
+                $areaName = $line[0];
+                $area = Area::where('shop_area', $areaName)->first();
+                if (!$area) {
+                    throw ValidationException::withMessages([
+                        'csv_file' => '地域は東京都、大阪府、福岡県のいずれかで記入してください',
+                    ]);
+                }
+                $genreName = $line[1];
+                $genre = Genre::where('shop_genre', $genreName)->first();
+                if (!$genre) {
+                    throw ValidationException::withMessages([
+                        'csv_file' => 'ジャンルは寿司、焼肉、イタリアン、居酒屋、ラーメンのいずれかで記入してください',
+                    ]);
+                }
+
+                $csv_array[$index]['area_id'] = $area->id;
+                $csv_array[$index]['genre_id'] = $genre->id;
                 $csv_array[$index]['shop_name'] = $line[2];
                 $csv_array[$index]['shop_photo'] = $line[3];
                 $csv_array[$index]['shop_comment'] = $line[4];

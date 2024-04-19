@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\CsvRequest;
 use App\Models\Shop;
+use App\Models\Area;
+use App\Models\Genre;
 
 class CsvController extends Controller
 {
@@ -34,9 +36,13 @@ class CsvController extends Controller
 
     public function InsertCsvData($csvData)
     {
+        $areaName = $csvData[0];
+        $area = Area::where('shop_area', $areaName)->first();
+        $genreName = $csvData[1];
+        $genre = Genre::where('shop_genre', $genreName)->first();
         $shop = new Shop;
-        $shop->area_id = $csvData[0];
-        $shop->genre_id = $csvData[1];
+        $shop->area_id = $area->id;
+        $shop->genre_id = $genre->id;
         $shop->shop_name = $csvData[2];
         $shop->shop_photo = $csvData[3];
         $shop->shop_comment = $csvData[4];

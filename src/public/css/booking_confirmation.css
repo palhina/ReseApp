@@ -77,3 +77,27 @@
         display: block;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .booking__wrapper {
+        width: 100%;
+    }
+
+    .booking__list {
+        display: block;
+    }
+
+    .booking__content {
+        width: 80%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .booking__card {
+        display: block;
+    }
+
+    .booking__date {
+        display: block;
+    }
+}

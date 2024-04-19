@@ -43,7 +43,7 @@
     box-shadow: 5px 5px 5px #B5B5B5;
 }
 
-/* レスポンシブデザイン */
+/* タブレット用レスポンシブデザイン */
 @media screen and (max-width: 768px) {
     .booking__wrapper {
         width: 90%;
@@ -63,6 +63,37 @@
 
     .rsv__datail--ttl,
     .rsv__datail--desc{
+        padding: 10px;
+    }
+
+    .back__btn {
+        margin: 10px;
+        padding: 5px 10px;
+        box-shadow: 2px 2px 2px #B5B5B5;
+    }
+
+}
+
+/* SP用 */
+@media screen and (max-width: 480px) {
+    .booking__wrapper {
+        width: 90%;
+    }
+
+    .booking__content {
+        margin: 10px;
+    }
+
+    .booking__shop-name {
+        padding: 10px;
+    }
+
+    .booking__detail {
+        padding: 10px;
+    }
+
+    .rsv__datail--ttl,
+    .rsv__datail--desc {
         padding: 10px;
     }
 
