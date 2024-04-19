@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Shop;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\CsvRequest;
+use App\Models\Shop;
 
 class CsvController extends Controller
 {
@@ -17,29 +19,21 @@ class CsvController extends Controller
     }
 
     // CSVインポート処理
-    public function importCsv(Request $request)
+    public function importCsv(CsvRequest $request)
     {
-        if ($request->hasFile('csvFile')) {
-            $file = $request->file('csvFile');
-            $path = $file->getRealPath();
-
-            $fp = fopen($path, 'r');
-            fgetcsv($fp);
-            while (($csvData = fgetcsv($fp)) !== FALSE) {
-                $this->InsertCsvData($csvData);
-            }
-            fclose($fp);
-            return redirect('/csv_upload')->with('result', '店舗情報を追加しました');
-        } else {
-            throw new \Exception('CSVファイルが取得できませんでした。');
+        $file = $request->file('csv_file');
+        $path = $file->getRealPath();
+        $fp = fopen($path, 'r');
+        fgetcsv($fp);
+        while (($csvData = fgetcsv($fp)) !== FALSE) {
+            $this->InsertCsvData($csvData);
         }
+        fclose($fp);
+        return redirect('/csv_upload')->with('result', '店舗情報を追加しました');
     }
 
     public function InsertCsvData($csvData)
     {
-        if (count($csvData) < 5) {
-            throw new \Exception('CSVデータの形式が正しくありません。');
-        }
         $shop = new Shop;
         $shop->area_id = $csvData[0];
         $shop->genre_id = $csvData[1];
@@ -58,16 +52,9 @@ class CsvController extends Controller
 
         if (! file_exists(storage_path('csv'))) {
             $bool = mkdir(storage_path('csv'));
-            if (! $bool) {
-                throw new \Exception("ディレクトリを作成できません。");
-            }
         }
         $name = 'shop.csv';
         $pathToFile = storage_path('csv/' . $name);
-
-        if (! file_put_contents($pathToFile, $downloadData)) {
-            throw new \Exception("ファイルの書き込みに失敗しました。");
-        }
 
         return response()->download($pathToFile, $name)->deleteFileAfterSend(true);
     }

@@ -17,9 +17,18 @@
             <form class="csv__import" method="post" action="/csv_upload" enctype="multipart/form-data">
                 @csrf
                 <label class="csv__ttl" name="csvFile">csvファイル：</label>
-                <input type="file" name="csvFile" id="csvFile"/>
+                <input type="file" name="csv_file"/>
                 <button class="csvimport__btn">読み込み</button>
             </form>
+        </div>
+        <div class="form__error">
+            @if (count($errors)>0)
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+            @endif
         </div>
 
         <div class="csvexport__contents">
