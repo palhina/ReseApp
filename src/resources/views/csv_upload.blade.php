@@ -33,7 +33,7 @@
 
         <div class="csvexport__contents">
             <p>csvファイルには、「地域、ジャンル、店舗名、画像URL、店舗概要」の順に、2行目以降から「,」で区切って入力してください。</p>
-            <p>以下のリンクから、テンプレートのダウンロードが可能です。</p>
+            <p>以下のボタンから、テンプレートのダウンロードが可能です。</p>
             <form class="csv-template__export" method="post" action="/csv_export">
                 @csrf
                 <button class="csvexport__btn">テンプレートのダウンロード</button>
