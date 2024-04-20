@@ -15,7 +15,7 @@
         <h2 class="rating__ttl">口コミ一覧</h2>
         <div class="rating__list">
             @foreach($shops as $shop)
-            
+
                 @php
                     $shopRatings = $ratings->where('shop_id', $shop->id);
                 @endphp
@@ -39,7 +39,7 @@
                             @method('DELETE')
                                 <button class="rating__delete--btn">削除</button>
                             </form>
-                        </div>    
+                        </div>
                         @endforeach
                     </div>
                 @endif

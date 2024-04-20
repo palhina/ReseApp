@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     // 店舗一覧＋お気に入り（ハートマーク）表示
-    public function index(Request $request)
+    public function index()
     {
         $areas = Area::all();
         $genres = Genre::all();

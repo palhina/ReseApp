@@ -1,3 +1,10 @@
+.shop-all {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+}
+
 .shop-all__wrapper {
     width: 100%;
 }
@@ -43,7 +50,6 @@
 
 .search__btn-wrapper{
     padding: 10px;
-    margin-right:10% ;
 }
 
 .search__btn{
@@ -52,15 +58,10 @@
     margin: auto 0;
 }
 
-.shop-all {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .shop-all__card {
     width: 23%;
     background-color: #fff;
-    margin: 10px ;
+    margin: 1% ;
     border-radius: 3px;
     box-shadow: 3px 3px 3px #B7B7B7;
     position: relative;

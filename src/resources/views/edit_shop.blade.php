@@ -16,6 +16,8 @@
             <div class="shop-all__card-img">
                 @if (strpos($shop->shop_photo, '/images/') === 0)
                     <img class="card__img" src="{{ $shop->shop_photo }}">
+                @elseif(Str::startsWith($shop->shop_photo, 'http'))
+                    <img class="card__img" src="{{ $shop->shop_photo}}">
                 @elseif ($shop->shop_photo)
                     <img class="card__img" src="{{ Storage::disk('s3')->url($shop->shop_photo) }}">
                 @endif
