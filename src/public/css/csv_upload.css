@@ -35,13 +35,10 @@
     list-style: none;
 }
 
-.csvexport__contents{
-    margin: 50px;
-}
-
-.csv-template__export{
-    margin: 50px;
-    text-align: center;
+.csv__information{
+    margin: 30px auto;
+    width: 90%;
+    padding: 30px;
 }
 
 /* レスポンシブ */
@@ -61,14 +58,6 @@
     .csvimport__btn{
         margin: 10px;
     }
-
-    .csvexport__contents {
-        margin: 10px;
-    }
-
-    .csv-template__export {
-        margin: 10px;
-    }
 }
 
 @media screen and (max-width: 480px) {
@@ -85,14 +74,6 @@
     }
 
     .csvimport__btn {
-        margin: 10px;
-    }
-
-    .csvexport__contents {
-        margin: 10px;
-    }
-
-    .csv-template__export {
         margin: 10px;
     }
 }

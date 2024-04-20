@@ -52,6 +52,7 @@ class CsvRequest extends FormRequest
                 SplFileObject::SKIP_EMPTY |
                 SplFileObject::DROP_NEW_LINE
             );
+            $csv_array = [];
             foreach ($file as $index => $line) {
                 if (empty($header)) {
                     $header = $line;

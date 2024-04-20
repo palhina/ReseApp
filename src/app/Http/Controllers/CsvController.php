@@ -44,24 +44,4 @@ class CsvController extends Controller
         $shop->shop_comment = $csvData[4];
         $shop->save();
     }
-
-    // CSVテンプレートのダウンロード
-    public function downloadCsv(): object
-    {
-        $csvHeader = ["地域", "ジャンル", "店舗名", "画像URL", "店舗概要"];
-        $downloadData = implode(',', $csvHeader);
-        $downloadData = mb_convert_encoding($downloadData, "SJIS", "UTF-8");
-        if (! file_exists(storage_path('csv'))) {
-            $bool = mkdir(storage_path('csv'));
-            if (! $bool) {
-                throw new \Exception("ディレクトリを作成できませんでした。");
-            }
-        }
-        $name = 'shop.csv';
-        $pathToFile = storage_path('csv/' . $name);
-        if (! file_put_contents($pathToFile, $downloadData)) {
-            throw new \Exception("ファイルの書き込みに失敗しました。");
-        }
-        return response()->download($pathToFile, $name)->deleteFileAfterSend(true);
-    }
 }

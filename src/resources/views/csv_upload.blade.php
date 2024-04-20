@@ -13,7 +13,7 @@
 
     <div class="csv__contents">
         <div  class="csvimport__contents">
-            <p>ここではCSVファイルによる、店舗情報の追加ができます。</p>
+            <p>CSVファイルによる店舗情報の追加</p>
             <form class="csv__import" method="post" action="/csv_upload" enctype="multipart/form-data">
                 @csrf
                 <label class="csv__ttl" name="csvFile">csvファイル：</label>
@@ -30,14 +30,17 @@
             </ul>
             @endif
         </div>
-
-        <div class="csvexport__contents">
-            <p>csvファイルには、「地域、ジャンル、店舗名、画像URL、店舗概要」の順に、2行目以降から「,」で区切って入力してください。</p>
-            <p>以下のボタンから、テンプレートのダウンロードが可能です。</p>
-            <form class="csv-template__export" method="post" action="/csv_export">
-                @csrf
-                <button class="csvexport__btn">テンプレートのダウンロード</button>
-            </form>
+        <div class ="csv__information">
+            <p class="csv__information--ttl">csvファイル記入上の注意</p>
+            <dl class="csv__information--txt">
+                <dt>1行目:ヘッダー</dt>
+                <dd>『地域,ジャンル,店舗名,画像URL,店舗概要』と記入</dd>
+                <dd>（項目は必ずこの順序で）</dd>
+                <dt>2行目以降:店舗情報</dt>
+                <dd>ヘッダーの項目の順に「,」で区切って入力</dd>
+                <dt>画像URL</dt>
+                <dd>http:// またはhttps:// で始まり.pngまたは.jpg（.jpeg）で終わるものを入力</dd>
+            </dl>
         </div>
     </div>
 @endsection

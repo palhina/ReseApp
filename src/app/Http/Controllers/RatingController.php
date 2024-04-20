@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class RatingController extends Controller
 {
-    // 評価ページ表示
+    // 口コミ新規投稿ページ表示
     public function rate($id)
     {
         $user = Auth::user();
@@ -20,16 +20,16 @@ class RatingController extends Controller
         return view('rating',compact('shop','user'));
     }
 
-    // 評価機能送信
+    // 口コミ新規登録処理
     public function review(RatingRequest $request,$id)
     {
         $user = Auth::user();
         $shop = Shop::find($id);
-        $img = null;
+        $img = null; 
         if ($request->hasFile('rating_img'))
         {
             $filename=$request->rating_img->getClientOriginalName();
-            $img = Storage::disk('s3')->putFileAs('image', $request->file('rating_img'), $filename, 'public');
+            $img = Storage::disk('s3')->putFileAs('rating', $request->file('rating_img'), $filename, 'public');
         }
         Rating::create([
             'user_id' => $user->id,
@@ -58,8 +58,18 @@ class RatingController extends Controller
         $rating = Rating::find($id);
         $shopId = $rating->shop_id;
         $shop = Shop::find($shopId);
-        $form = $request->all();
-        $rating->update($form);
+
+        if ($request->hasFile('rating_img'))
+        {
+            $filename=$request->rating_img->getClientOriginalName();
+            $img = Storage::disk('s3')->putFileAs('rating', $request->file('rating_img'), $filename, 'public');
+        }
+        $rating->update([
+            'rating' => $request->input('rating'),
+            'comment' => $request->input('comment'),
+            'rating_img' => $img,
+        ]);
+
         return redirect()->route('shop.detail',['id' => $shop->id])->with('result', '口コミを編集しました');
     }
 
