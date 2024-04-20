@@ -21,6 +21,10 @@
     margin-bottom: 30px;
 }
 
+.twoFA__txt{
+    margin: 10px;
+}
+
 .twoFA__btn--back{
     text-decoration: none;
     color: #3560F6;
@@ -36,6 +40,13 @@
 }
 
 @media screen and (max-width: 768px) {
+    .twoFA__content {
+        width: 70%;
+        margin: 40px auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
     .twoFA__content {
         width: 80%;
         margin: 30px auto;

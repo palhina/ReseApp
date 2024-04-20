@@ -103,6 +103,32 @@
     .shop-detail__wrapper {
         display: block;
         margin: 0;
+        padding: 30px;
+    }
+
+    .shop__contents {
+        width: 80%;
+        margin: auto;
+    }
+
+    .shop__rsv {
+        width: 80%;
+        margin: auto;
+    }
+
+    .rsv-confirm {
+        height: auto;
+    }
+
+    .rsv__edit--btn {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .shop-detail__wrapper {
+        display: block;
+        margin: 0;
         padding-top: 0;
     }
 
@@ -123,5 +149,4 @@
     .rsv__edit--btn {
         position: relative;
     }
-
 }

@@ -60,6 +60,34 @@
     }
 
     .information-email__wrapper {
+        width: 70%;
+    }
+
+    .information-email__detail {
+        padding: 10px;
+    }
+
+    .information-email__content {
+        padding: 10px;
+    }
+
+    .information-email__ttl,
+    .information-email__text {
+        margin: 10px;
+    }
+
+    .send-email__btn {
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .flash_message {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .information-email__wrapper {
         width: 90%;
     }
 

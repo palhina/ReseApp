@@ -11,9 +11,9 @@
     <div class="my-page__wrapper">
         <div class="my-page__rsv">
             <div class="my-page__rsv-ttl">
-                <h3>予約状況</h3>
+                <h3 class="">予約状況</h3>
             </div>
-            <div class="my-page_rsv">
+            <div class="my-page__rsv--contents">
                 @foreach($reservations as $key => $reservation)
                 <div class="my-page__rsv-detail">
                     <form class="rsv__delete" method="post" action="/cancel/{{ $reservation->id }}">

@@ -52,7 +52,7 @@
 /* TAB用レスポンシブ */
 @media screen and (max-width: 768px) {
     .shop-create__wrapper {
-        width: 80%;
+        width: 70%;
         margin: 20px auto;
     }
 
@@ -80,7 +80,7 @@
 }
 
 /* SP用レスポンシブ */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 480px) {
     .shop-create__wrapper {
         width: 80%;
         margin: 20px auto;

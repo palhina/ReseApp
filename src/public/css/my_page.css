@@ -126,8 +126,53 @@
     }
 
     .my-page__rsv {
+        width: 80%;
+        margin: auto;
+    }
+
+    .my-page__rsv--contents{
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .my-page__rsv-detail {
+        position: relative;
+        width: 45%;
+        margin: 2%;
+        border-radius: 3px;
+        box-shadow: 3px 3px 3px #B7B7B7;
+    }
+
+    .shop__fav {
+        width: 80%;
+        margin: auto;
+    }
+
+    .my-page__fav {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .my-page__fav-card {
+        width: 45%;
+        margin: 1%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .my-page__wrapper {
+        display: block;
+    }
+
+    .my-page__rsv {
         width: 90%;
         margin: auto;
+    }
+
+    .my-page__rsv-detail {
+        position: relative;
+        width: 100%;
     }
 
     .my-page__rsv-detail {

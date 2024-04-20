@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
-    // 検索機能
+    // 検索・ソート機能
     public function search(Request $request)
     {
         $shop_area = $request->input('shop_area');
@@ -23,6 +23,7 @@ class ShopController extends Controller
         $sort = $request->input('sort');
         $query = Shop::query();
 
+        // 検索機能
         if ($shop_area){
             $query->where('area_id', $shop_area);
         }
@@ -33,6 +34,7 @@ class ShopController extends Controller
             $query->where('shop_name', 'LIKE', '%' . $keyword . '%');
         }
 
+        // ソート機能
         if ($sort === 'random') {
             $query->inRandomOrder();
         }

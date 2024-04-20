@@ -119,7 +119,7 @@
 
     .search-form {
         width: 90%;
-        margin: 0 30px 10px auto;
+        margin: 10px;
     }
 
     .search-form__area,
@@ -150,7 +150,9 @@
     }
 
     .shop-all__card{
-        width: 100%;
+        width: 46%;
+        margin: 2%;
+        border-radius: 5px;
     }
 }
 

@@ -65,6 +65,26 @@
     }
 
     .rating__content {
+        width: 70%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .rating__card {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .ratings__wrapper {
+        width: 100%;
+    }
+
+    .rating__list {
+        display: block;
+    }
+
+    .rating__content {
         width: 80%;
         margin: 20px auto;
         padding: 10px;
@@ -73,5 +93,4 @@
     .rating__card {
         display: block;
     }
-
 }

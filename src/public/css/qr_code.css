@@ -15,6 +15,17 @@
 
 @media screen and (max-width: 768px) {
     .qr__content {
+        width: 80%;
+        margin: auto;
+    }
+
+    .qr__ttl {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .qr__content {
         width: 90%;
         margin: auto;
     }

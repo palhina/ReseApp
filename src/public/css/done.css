@@ -31,6 +31,18 @@
     }
 
     .done__content {
+        width: 70%;
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .done__message {
+        padding: 10px;
+        font-weight: lighter;
+    }
+
+    .done__content {
         width: 80%;
         padding: 20px;
         box-shadow: 5px 5px 5px #B7B7B7;

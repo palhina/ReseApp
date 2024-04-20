@@ -83,6 +83,31 @@
     }
 
     .login__content {
+        width: 70%;
+        box-shadow: 3px 3px 3px #B7B7B7;
+    }
+
+    .form__email-text,
+    .form__pwd-text {
+        margin: 20px;
+    }
+
+    .form__email-text::before,
+    .form__pwd-text::before {
+        margin-right: 5px;
+    }
+
+    .form__error {
+        border-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main__ttl {
+        padding: 10px;
+    }
+
+    .login__content {
         width: 80%;
         box-shadow: 3px 3px 3px #B7B7B7;
     }

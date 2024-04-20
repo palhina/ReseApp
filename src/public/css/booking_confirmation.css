@@ -59,14 +59,22 @@
         width: 100%;
     }
 
+    .booking__list {
+        display: flex;
+        width: 90%;
+        margin: auto;
+    }
+
     .booking__content {
-        width: 80%;
-        margin: 20px auto;
+        width: 46%;
+        margin: 1%;
         padding: 10px;
     }
 
     .booking__card {
         display: block;
+        padding: 10px;
+        margin: 10px;
     }
 
     .booking__date {

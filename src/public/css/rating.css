@@ -170,15 +170,59 @@
     cursor: pointer;
 }
 
-/* レスポンシブ */
+
+/* タブレット用レスポンシブ */
 @media screen and (max-width: 768px) {
+    .shop-detail__wrapper {
+        display: block;
+        width: 80%;
+        margin: auto;
+        height: fit-content;
+    }
+
+    .shop__contents {
+        width: 80%;
+        margin: 30px auto;
+        border-right: none;
+    }
+
+    .contents__ttl {
+        font-size: 20px;
+        padding: 0 10px;
+    }
+
+    .shop__contents--card {
+        width: 80%;
+        margin: 30px;
+    }
+
+    .shop__rate {
+        width: 80%;
+        margin: 30px auto;
+    }
+
+    .shop__rate-form {
+        margin: 30px 0px;
+    }
+
+    .form__fiveStar {
+        justify-content: flex-end;
+    }
+
+    .form__fiveStar .star {
+        font-size: 30px;
+    }
+}
+
+/* SP用レスポンシブ */
+@media screen and (max-width: 480px) {
     .shop-detail__wrapper {
         display: block;
         height: fit-content;
     }
 
     .shop__contents {
-        width: 80%;
+        width: 100%;
         margin: auto;
         border-right: none;
     }
@@ -206,6 +250,6 @@
     }
 
     .form__fiveStar .star {
-        font-size: 30px;
+        font-size: 20px;
     }
 }

@@ -46,7 +46,7 @@
 /* タブレット用レスポンシブデザイン */
 @media screen and (max-width: 768px) {
     .booking__wrapper {
-        width: 90%;
+        width: 80%;
     }
 
     .booking__content {

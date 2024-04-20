@@ -91,6 +91,28 @@
     }
 
     .register__content {
+        width: 70%;
+    }
+
+    .form__name-text,
+    .form__email-text,
+    .form__pwd-text {
+        margin: 30px;
+    }
+
+    .form__name-text::before,
+    .form__email-text::before,
+    .form__pwd-text::before {
+        margin-right: 5px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main__ttl {
+        padding: 10px;
+    }
+
+    .register__content {
         width: 80%;
         box-shadow: 3px 3px 3px #B7B7B7;
     }

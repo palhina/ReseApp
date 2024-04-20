@@ -70,3 +70,29 @@
         margin: 10px;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .csv__contents {
+        padding: 20px 10px;
+    }
+
+    .csvimport__contents {
+        margin: 10px;
+    }
+
+    .csv__import {
+        margin: 10px;
+    }
+
+    .csvimport__btn {
+        margin: 10px;
+    }
+
+    .csvexport__contents {
+        margin: 10px;
+    }
+
+    .csv-template__export {
+        margin: 10px;
+    }
+}

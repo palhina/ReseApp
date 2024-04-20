@@ -28,9 +28,23 @@
     font-size: 1.5em;
 }
 
-
-
 @media screen and (max-width: 768px) {
+    .menu__content {
+        width: 70%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .menu__info {
+        margin: 20px 0 0 0;
+    }
+
+    .menu__list {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 480px) {
     .menu__content {
         width: 80%;
         margin: 20px auto;

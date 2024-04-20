@@ -151,6 +151,32 @@
 @media screen and (max-width: 768px) {
     .shop-detail__wrapper {
         display: block;
+        width: 80%;
+        margin: auto;
+    }
+
+    .shop__contents {
+        width: 80%;
+        margin: auto;
+    }
+
+    .shop__rsv {
+        width: 80%;
+        margin: auto;
+    }
+
+    .rsv-confirm {
+        height: auto;
+    }
+
+    .form__button-rsv {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .shop-detail__wrapper {
+        display: block;
         width: 100%;
         margin: 0;
         padding: 0;

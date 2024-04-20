@@ -78,6 +78,24 @@
 /* レスポンシブ */
 @media screen and (max-width: 768px) {
     .shop-all {
+        display: flex;
+        flex-wrap: wrap;
+        width: 90%;
+        margin: auto;
+    }
+
+    .shop-all__card {
+        width: 46%;
+        margin: 1%;
+    }
+
+    .edit__shop {
+        margin: 20px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .shop-all {
         display: block;
     }
 
