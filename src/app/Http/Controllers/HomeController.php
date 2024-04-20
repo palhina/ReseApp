@@ -9,7 +9,6 @@ use App\Models\Favorite;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Rating;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {

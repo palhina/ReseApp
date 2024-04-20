@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Reservation; 
+use App\Models\Reservation;
 
 class ReservationsTableSeeder extends Seeder
 {
@@ -24,7 +24,7 @@ class ReservationsTableSeeder extends Seeder
             'rsv_guests' => '1',
         ],
         ];
-        foreach ($reservations as $reservation) 
+        foreach ($reservations as $reservation)
         {
             Reservation::create([
                 'user_id' => $reservation['user_id'],

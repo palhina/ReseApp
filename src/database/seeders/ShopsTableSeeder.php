@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Shop; 
+use App\Models\Shop;
 
 class ShopsTableSeeder extends Seeder
 {
@@ -177,7 +177,7 @@ class ShopsTableSeeder extends Seeder
                 'shop_comment' =>'毎日店主自ら市場等に出向き、厳選した魚介類が、お鮨をはじめとした繊細な料理に仕立てられます。また、選りすぐりの種類豊富なドリンクもご用意しております。',
             ],
         ];
-        foreach ($shops as $shop) 
+        foreach ($shops as $shop)
         {
             Shop::create([
                 'area_id' => $shop['area_id'],

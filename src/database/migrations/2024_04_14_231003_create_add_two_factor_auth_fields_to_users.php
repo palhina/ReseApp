@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-             $table->string('tfa_token')
+            $table->string('tfa_token')
                 ->nullable()
                 ->after('remember_token');
             $table->dateTime('tfa_expiration')

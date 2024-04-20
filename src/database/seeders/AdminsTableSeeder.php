@@ -4,8 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-use App\Models\Admin; 
+use App\Models\Admin;
 
 class AdminsTableSeeder extends Seeder
 {
@@ -23,7 +22,7 @@ class AdminsTableSeeder extends Seeder
                 'password' =>bcrypt('1234567890'),
             ],
         ];
-        foreach ($admins as $admin) 
+        foreach ($admins as $admin)
         {
             Admin::create([
                 'name' => $admin['name'],

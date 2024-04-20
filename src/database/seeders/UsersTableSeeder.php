@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\User; 
+use App\Models\User;
 use Carbon\Carbon;
 
 class UsersTableSeeder extends Seeder
@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => null
         ],
         ];
-        foreach ($users as $user) 
+        foreach ($users as $user)
         {
             User::create([
                 'name' => $user['name'],

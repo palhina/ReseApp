@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Favorite; 
+use App\Models\Favorite;
 
 class FavoritesTableSeeder extends Seeder
 {
@@ -25,7 +25,7 @@ class FavoritesTableSeeder extends Seeder
             'shop_id' => '2',
         ],
         ];
-        foreach ($favorites as $favorite) 
+        foreach ($favorites as $favorite)
         {
             Favorite::create([
                 'user_id' => $favorite['user_id'],

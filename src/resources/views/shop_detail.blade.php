@@ -76,7 +76,7 @@
                         <button class="rsv__rate--btn">口コミを投稿する</button>
                     </form>
                 </div>
-            @endif    
+            @endif
         </div>
         <div class="shop__rsv">
             <h3 class="rsv__ttl">予約</h3>

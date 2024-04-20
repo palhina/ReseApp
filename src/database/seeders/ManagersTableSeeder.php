@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Manager; 
+use App\Models\Manager;
 
 class ManagersTableSeeder extends Seeder
 {
@@ -27,7 +27,7 @@ class ManagersTableSeeder extends Seeder
                 'password' =>bcrypt('1234567890'),
             ],
         ];
-        foreach ($managers as $manager) 
+        foreach ($managers as $manager)
         {
             Manager::create([
                 'name' => $manager['name'],

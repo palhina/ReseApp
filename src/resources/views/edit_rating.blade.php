@@ -66,7 +66,7 @@
                 </div>
                 <div class="form-group">
                     <p class="form__rating">口コミを投稿</p>
-                    <textarea class="form__rate-comment" col="50" name="comment" placeholder="カジュアルな夜のお出かけにお勧めのスポット" form="rate" oninput="updateCharacterCount(this)">{{$rating->comment}}</textarea>
+                    <textarea class="form__rate-comment" col="50"  maxlength="400" name="comment" placeholder="カジュアルな夜のお出かけにお勧めのスポット" form="rate" oninput="updateCharacterCount(this)">{{$rating->comment}}</textarea>
                     <p class="count">
                         <span id="length">0</span>/400（最高文字数）
                     </p>

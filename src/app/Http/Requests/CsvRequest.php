@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 use SplFileObject;
 use App\Models\Area;
 use App\Models\Genre;
-use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class CsvRequest extends FormRequest
