@@ -63,8 +63,8 @@ http://rese-aws-launch.shop
   - Composer 2.6.2  
   - PHPUnit 9.5.10  
 - ミドルウェア  
-  - Nginx 1.21.1  
-  - MySQL 8.0.35/PHPMyAdmin   
+  - Nginx 1.18.0  
+  - MySQL 8.0.36/PHPMyAdmin   
 - インフラ  
   - Docker 24.0.5 
   - AWS(IAM,VPC,EC2,RDS,S3,Route53)  
@@ -135,7 +135,8 @@ http://rese-aws-launch.shop
 	AWS S3コンソールで、画像をアップロードするための新しいS3バケットを作成してください。  
   
 ３． ”.env”ファイルにおいて、必要な環境変数を設定します  
-  
+
+      FILESYSTEM_DISK=s3  
       AWS_ACCESS_KEY_ID= アクセスキー  
       AWS_SECRET_ACCESS_KEY=シークレットアクセスキー  
       AWS_DEFAULT_REGION=S3バケットを作成したリージョン名  
