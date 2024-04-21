@@ -135,7 +135,8 @@ http://rese-aws-launch.shop
 	AWS S3コンソールで、画像をアップロードするための新しいS3バケットを作成してください。  
   
 ３． ”.env”ファイルにおいて、必要な環境変数を設定します  
-  
+
+      FILESYSTEM_DISK=s3  
       AWS_ACCESS_KEY_ID= アクセスキー  
       AWS_SECRET_ACCESS_KEY=シークレットアクセスキー  
       AWS_DEFAULT_REGION=S3バケットを作成したリージョン名  
