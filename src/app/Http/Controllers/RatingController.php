@@ -58,7 +58,7 @@ class RatingController extends Controller
         $rating = Rating::find($id);
         $shopId = $rating->shop_id;
         $shop = Shop::find($shopId);
-
+        $img = $rating->rating_img;
         if ($request->hasFile('rating_img'))
         {
             $filename=$request->rating_img->getClientOriginalName();
