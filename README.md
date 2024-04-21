@@ -11,7 +11,8 @@
 ![manager](https://github.com/palhina/ReseApp/assets/129643430/e702cd4a-fb8a-4c05-8433-ea1ed49c6e71)  
   
 ### 管理者アカウント  
-![admin](https://github.com/palhina/ReseApp/assets/129643430/b3e767c7-1a8d-424d-85fd-684d1a2de4f7)  
+![admin](https://github.com/palhina/ReseApp/assets/129643430/f3db2a59-2f5f-4fbe-922c-dc8dcea7231f)  
+
   
   
 ## 作成した目的  
@@ -120,8 +121,27 @@ http://rese-aws-launch.shop
 ９．画像のアップロードを行うため、シンボリックリンクを作成します：
 
         $php artisan storage:link
-
   
+  
+**このプロジェクトでは、AWS S3を利用して画像アップロード機能を実装しています。**  
+  
+以下の手順でAWS S3へのアクセスを設定してください。  
+  
+１． AWS IAM ユーザーの作成  
+	AWS IAMコンソールで、S3へのアクセス権限を付与した新しいIAMユーザーを作成してください。  
+	IAMユーザーのアクセスキーとシークレットキーの取得を行ってください。    
+  
+２． S3 バケットの作成  
+	AWS S3コンソールで、画像をアップロードするための新しいS3バケットを作成してください。  
+  
+３． ”.env”ファイルにおいて、必要な環境変数を設定します  
+  
+      AWS_ACCESS_KEY_ID= アクセスキー  
+      AWS_SECRET_ACCESS_KEY=シークレットアクセスキー  
+      AWS_DEFAULT_REGION=S3バケットを作成したリージョン名  
+      AWS_BUCKET=S3バケット名  
+
+
 * アプリケーションはデフォルトで http://localhost でアクセスできます。
 
 * MySQLはデフォルトで http://localhost:8080 でアクセスできます。
