@@ -55,7 +55,8 @@ class ReservationControllerTest extends TestCase
     {
         $user = User::factory()->create();
         $this->actingAs($user);
-        $reservation = Reservation::factory()->create();
+        $shop = Shop::factory()->create();
+        $reservation = Reservation::factory()->create(['shop_id'=>$shop->id]);
         $response = $this->get("/edit/{$reservation->id}");
         $response->assertStatus(200);
         $response->assertViewIs('edit');

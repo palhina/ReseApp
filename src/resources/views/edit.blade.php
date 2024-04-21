@@ -14,8 +14,8 @@
             <div class="shop__contents-img">
                 @if (strpos($reservation->shop->shop_photo, '/images/') === 0)
                     <img class="shop__img" src="{{ $reservation->shop->shop_photo }}">
-                @elseif(Str::startsWith($shop->shop_photo, 'http'))
-                    <img class="shop__img" src="{{ $shop->shop_photo}}">
+                @elseif(Str::startsWith($reservation->shop->shop_photo, 'http'))
+                    <img class="shop__img" src="{{ $reservation->shop->shop_photo}}">
                 @elseif ($reservation->shop->shop_photo)
                     <img class="shop__img" src="{{ Storage::disk('s3')->url($reservation->shop->shop_photo) }}">
                 @endif
