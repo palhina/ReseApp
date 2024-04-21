@@ -63,8 +63,8 @@ http://rese-aws-launch.shop
   - Composer 2.6.2  
   - PHPUnit 9.5.10  
 - ミドルウェア  
-  - Nginx 1.21.1  
-  - MySQL 8.0.35/PHPMyAdmin   
+  - Nginx 1.18.0  
+  - MySQL 8.0.36/PHPMyAdmin   
 - インフラ  
   - Docker 24.0.5 
   - AWS(IAM,VPC,EC2,RDS,S3,Route53)  
