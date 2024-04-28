@@ -1,0 +1,47 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7.4-node-browsers
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: composer-v1-{{ checksum "src/composer.lock" }}
+      - run:
+          working_directory: src
+          command: composer install -n --prefer-dist --ignore-platform-reqs
+      - save_cache:
+          key: composer-v1-{{ checksum "src/composer.lock" }}
+          paths:
+            - src/vendor
+
+      - restore_cache:
+          key: npm-v2-{{ checksum "src/package-lock.json" }}
+      - run:
+          working_directory: src
+          name: npm ci
+          command: |
+            if [ ! -d node_modules ]; then
+              npm ci
+            fi
+      - save_cache:
+          key: npm-v2-{{ checksum "src/package-lock.json" }}
+          paths:
+            - src/node_modules
+      - run:
+          working_directory: src
+          command: npm run dev
+      - run:
+          working_directory: src
+          name: php test
+          command: vendor/bin/phpunit
+
+orbs:
+  aws-cli: circleci/aws-cli@1.0.0
+
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - build
