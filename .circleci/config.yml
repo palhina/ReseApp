@@ -10,7 +10,7 @@ jobs:
           key: composer-v1-{{ checksum "src/composer.lock" }}
       - run:
           working_directory: src
-          command: composer install -n --prefer-dist
+          command: composer install -n --prefer-dist --ignore-platform-reqs
       - save_cache:
           key: composer-v1-{{ checksum "src/composer.lock" }}
           paths:
